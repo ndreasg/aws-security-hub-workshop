@@ -462,14 +462,14 @@
                 
                 
                 <h1 id="module-3-remediation-and-response-cis-benchmark-and-custom-action">Module 3: Remediation and Response CIS Benchmark and Custom Action</h1>
-<p>In the first half of this module, you will connect a Security Hub custom action to a provided Lambda function.  This function isolates an EC2 instance from the VPC network when invoked.  In the second half, you will deploy the auto remediation and response actions. </p>
+<p>After Security Hub has detected configuration that needs attention, the next step is take action and resolve the finding.  In the first half of this module, you will connect a Security Hub custom action to a provided Lambda function.  This function isolates an EC2 instance from the VPC network when invoked.  In the second half, you will deploy the auto remediation and response actions for the CIS AWS Foundations standard. </p>
 <p><strong>Agenda</strong></p>
 <ol>
 <li>Create a Security Hub Custom Action to Isolate an EC2 Instance – 10 min</li>
 <li>Deploy remediation playbooks for CIS Benchmarks - 15 min</li>
 </ol>
 <h2 id="create-a-security-hub-custom-action-to-isolate-an-ec2-instance">Create a Security Hub Custom Action to Isolate an EC2 Instance</h2>
-<p>This guide will show you how to create a custom action in Security Hub and then tie that to an EventBridge rule which calls a lambda function to change the security group on an EC2 instance that is part of a Security Hub finding. </p>
+<p>This guide will show you how to create a custom action in Security Hub and then tie that to an EventBridge rule which calls a Lambda function to change the security group on an EC2 instance that is part of a Security Hub finding. </p>
 <h3 id="create-a-custom-action-in-security-hub">Create a Custom Action in Security Hub</h3>
 <ol>
 <li>
@@ -566,7 +566,7 @@
 
 <p><img alt="Custom Action" src="../images/03-custom-create-event-source-updated.png" /></p>
 <ol>
-<li>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>isolate-ec2-security-group</strong> lambda function. </li>
+<li>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>isolate-ec2-security-group</strong> Lambda function. </li>
 </ol>
 <p><img alt="Custom Action" src="../images/03-custom-create-confirm.png" /></p>
 <div class="admonition info">
@@ -588,7 +588,10 @@
 <p>Add a filter for <strong>Resource Type</strong> and enter AwsEc2Instance (case sensitive)</p>
 </li>
 </ol>
-<p><code>AwsEc2Instance</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">AwsEc2Instance</span>
+</code></pre></div>
+
+
 <ol>
 <li>
 <p>Click the title of any finding in this filtered list where the target is the type <strong>AwsEc2Instance</strong>.</p>
@@ -620,7 +623,7 @@
 <li>Go back to the <strong>EC2 browser tab</strong>.  Refresh the tab.  Verify that the security group on the instance has been changed to the security team security group. </li>
 </ol>
 <div class="admonition question">
-<p class="admonition-title">Review the isolate-ec2-security-group lambda function.  What changes would you make for your own custom actions?</p>
+<p class="admonition-title">Review the isolate-ec2-security-group Lambda function.  What changes would you make for your own custom actions?</p>
 </div>
 <h2 id="deploy-remediation-playbooks-for-cis-benchmarks">Deploy remediation playbooks for CIS Benchmarks</h2>
 <p>By creating Security Hub custom actions mapped to specific finding type and by developing a corresponding Lambda function for that custom action, you can achieve targeted, automated remediation for these findings. This allows you to decide if you want to invoke a remediation action on a specific finding. You can also use these Lambda functions as the target of fully automated remediation actions that do not require any human review.</p>
@@ -702,37 +705,31 @@
 <ol>
 <li>Click the title for "CIS 2.8 Ensure rotation for customer created CMKs is enabled"</li>
 </ol>
-<div class="admonition info">
-<p class="admonition-title">Observe that two checks have a status of Failed</p>
-</div>
 <p><img alt="remediation" src="../images/03-remediation-cis28-check.png" /></p>
 <ol>
 <li>
-<p>Click the <strong>check box</strong> to select the finding where the target Resource Type is <strong>AwsKmsKey</strong>.</p>
+<p>Click the <strong>check box</strong> to select the finding.</p>
 </li>
 <li>
 <p>Click the <strong>Actions</strong> drop down on the right side and select <strong>CIS 2.8 RR</strong>.</p>
 </li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">Notice the list of available actions you have for CIS created from the template deployment.</p>
+<p class="admonition-title">This triggers the remediation Lambda function associated with resolving CIS 2.8.  Notice the list of available actions you have for CIS created from the template deployment.</p>
 </div>
 <p><img alt="remediation" src="../images/03-remediation-cis28-action.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Choosing this action sends a copy of the finding(s) to EventBridge.  The findings then trigger a matching rule in EventBridge which then initiates a Lambda.  The Lambda function enables key rotation on the KMS keys that are covered by the key(s) that were selected when the Security Hub custom action was chosen.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">After the green bar has confirmed the execution of the custom check, we need to manually initiate a re-evaluation in config in order to resolve the finding in Security Hub.</p>
+<p class="admonition-title">After the green bar has confirmed the execution of the custom check, we need to manually initiate a re-evaluation in Config in order to resolve the finding in Security Hub.</p>
 </div>
 <ol>
 <li>
-<p>Click the title on the same finding to expand the details on the right.</p>
+<p>Click the three vertical dots to expand associated links to Config.</p>
 </li>
 <li>
-<p>Click the button for <strong>Rule(s)</strong>.</p>
-</li>
-<li>
-<p>Select "securityhub-cmk-backing-key-rotation-enabled-#####" to view the Config rule implemented via Security Hub.</p>
+<p>Click the button for <strong>Config Rule</strong>.</p>
 </li>
 </ol>
 <p><img alt="remediation" src="../images/03-remediation-cis28-rule.png" /></p>
