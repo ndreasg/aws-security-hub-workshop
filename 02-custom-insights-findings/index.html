@@ -508,7 +508,9 @@
 </li>
 </ol>
 <p><img alt="Config" src="../images/02-config-dashboard.png" /></p>
-<p>!!! Make sure to not choose Rules from the Aggregated view menu.  This requires Config Aggregator and this feature is not used in this workshop.</p>
+<div class="admonition info">
+<p class="admonition-title">Make sure to not choose Rules from the Aggregated view menu.  This requires Config Aggregator and this feature is not used in this workshop.</p>
+</div>
 <ol>
 <li>In the Rules page there will be one rule named <strong>approved-amis-by-id</strong>.  Click on the rule name to go to the detail page for that rule.  </li>
 </ol>
@@ -526,7 +528,9 @@
 </li>
 </ol>
 <p>An instance should now be showing as noncompliant in the <strong>Choose resources in scope</strong> section.  This re-run of the Config rule will trigger the EventBridge rule that is looking for noncompliant resources, resulting in the finding showing in Security Hub.  </p>
-<p>!!! Clearing results and re-evaluating the Config rule is being done to help force sending findings into Security Hub for this workshop.  Under normal circumstances you will not need manually run the Config rule in order to get findings to show in Security Hub.  Once you have the Config and EventBridge rules configured, new noncompliant resources will automatically flow into Security Hub as a Config rule finds noncompliant resources.  </p>
+<div class="admonition info">
+<p class="admonition-title">Clearing results and re-evaluating the Config rule is being done to help force sending findings into Security Hub for this workshop.  Under normal circumstances you will not need manually run the Config rule in order to get findings to show in Security Hub.  Once you have the Config and EventBridge rules configured, new noncompliant resources will automatically flow into Security Hub as a Config rule finds noncompliant resources.</p>
+</div>
 <h3 id="view-the-noncompliant-ami-finding-in-security-hub">View the noncompliant AMI finding in Security Hub</h3>
 <ol>
 <li>
@@ -541,7 +545,9 @@
 </ol>
 <p><img alt="Config" src="../images/02-unapproved-ami-finding.png" /></p>
 <p>You now have a setup in place that helps demonstrate how you can send custom findings into Security Hub using AWS data sources and EventBridge rules.</p>
-<p>!!! In your environment the Lambda function <strong>find-secrets-without-rotation</strong> checks for secrets that have a rotation time that is beyond the max days parameter on the function.  When secrets are found with a rotation time beyond what is defined in the function a finding is created in Security Hub.  Take some time to explore the Lambda function to see how you can directly send custom findings into Security Hub.  </p>
+<div class="admonition info">
+<p class="admonition-title">In your environment the Lambda function <strong>find-secrets-without-rotation</strong> checks for secrets that have a rotation time that is beyond the max days parameter on the function.  When secrets are found with a rotation time beyond what is defined in the function a finding is created in Security Hub.  Take some time to explore the Lambda function to see how you can directly send custom findings into Security Hub.</p>
+</div>
 <h2 id="create-custom-insights-for-custom-findings">Create Custom Insights for Custom Findings</h2>
 <p>This section will walk you through how to create a custom insight to give you more visibility around the sources that are sending findings into Security Hub for custom findings.</p>
 <p>When a custom finding is sent into Security Hub it will have a company of <strong>Personal</strong> and a product of <strong>Default</strong>.  Unlike integrations from AWS services and approved 3rd parties, you cannot use the Company and/or Product fields to determine the source of your finding for custom findings.</p>
