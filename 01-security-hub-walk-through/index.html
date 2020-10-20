@@ -523,16 +523,16 @@
 </div>
 <p><img alt="Security Hub Multi" src="../images/01-multi-account-invited.png" /></p>
 <h2 id="integrations">Integrations</h2>
-<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For third-party products Security Hub gives you the ability to selectively enable the integrations and give you access to the configuration instructions related to the third-party product.   </p>
+<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For third-party products Security Hub gives you the ability to selectively enable the integrations and and provides a link to the configuration instructions related to the third-party product.   </p>
 <p>Security Hub detects and consolidates only those security findings from the supported AWS and partner product integrations that are generated after Security Hub is enabled in your AWS accounts. It doesn't retroactively detect and consolidate security findings that were generated before you enabled Security Hub. </p>
 <ol>
 <li>Click on <strong>Integrations</strong> from the left-hand navigation pane. </li>
 </ol>
 <p><img alt="Security Hub Integrations" src="../images/01-integrations-all.png" /></p>
 <ol>
-<li>Scroll through the list of available integrations.  Return to the top and <strong>search</strong> for a SaaS based solution such as: <strong>Check Point: Dome9 Arc</strong>, <strong>Palo Alto Networks: Redlock</strong>, or <strong>Symantec: Cloud Workload Protect</strong>.   </li>
+<li>Scroll through the list of available integrations.  Return to the top and <strong>search</strong> for <strong>Cloud Custodian</strong>.   </li>
 </ol>
-<p><img alt="Integrations Search" src="../images/01-integrations-search.png" /></p>
+<p><img alt="Integrations Search" src="../images/01-integrations-search-cc.png" /></p>
 <ol>
 <li>Click <strong>Accept Findings</strong>.  Review the permissions required for the integration. </li>
 </ol>
@@ -541,9 +541,9 @@
 <li>Click <strong>Accept findings</strong>. </li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">This will put in place a service policy allowing the partner solution to send findings information into this account.   To use in your account, you would still need to complete the <strong>Configure</strong> step on the Partner solution so findings that are created by the partner solution are sent to Security Hub. </p>
+<p class="admonition-title">This will put in place a service policy allowing the partner solution to send finding information into this account.   For the purposes of this workshop a Cloud Custodian instance is already set up to automatically send findings to the integration you just enabled.  To use other partner integrations in your account, you would still need to complete the <strong>Configure</strong> step in the partner solution so findings that are created by the partner solution are sent to Security Hub. </p>
 </div>
-<p><img alt="Integrations Configure" src="../images/01-integrations-configure.png" /></p>
+<p><img alt="Integrations Configure" src="../images/01-integrations-configure-cc.png" /></p>
 <h2 id="findings">Findings</h2>
 <p>Security Hub imports findings AWS security services, third-party product integrations that you enable, and custom integrations you build. Security Hub consumes these findings using a standard findings format called AWS Security Finding Format (ASFF), which eliminates the need for time-consuming data conversion efforts. Security Hub then correlates the findings across integrated products to prioritize the most important ones. For more information about the findings format, see <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html" target="_blank">AWS Security Finding Format</a>.  </p>
 <ol>
@@ -568,9 +568,9 @@
 </ol>
 <p><img alt="Findings Resources" src="../images/01-findings-resources.png" /></p>
 <ol>
-<li>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AwsS3Bucket). this will add it as a filter to the search. </li>
+<li>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AWSEc2Instance). this will add it as a filter to the search. </li>
 </ol>
-<p><img alt="Findings Search" src="../images/01-findings-search-s3.png" /></p>
+<p><img alt="Findings Search" src="../images/01-findings-search-ec2.png" /></p>
 <h2 id="insights">Insights</h2>
 <p>A Security Hub Insight is a collection of related findings defined by an aggregation statement and optional filters. An insight identifies a security area that requires attention and intervention. Security Hub offers several managed (default) insights that you can't modify or delete. You can also create custom insights to track security issues unique to your AWS environment and usage.  </p>
 <ol>
