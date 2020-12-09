@@ -1,6 +1,4 @@
 
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -17,7 +15,7 @@
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="../assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
     
     
       
@@ -25,13 +23,17 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fe0cca5b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
       
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -48,9 +50,14 @@
   </head>
   
   
-    <body dir="ltr">
-  
     
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -140,8 +147,6 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
       
@@ -183,7 +188,7 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Overview" class="md-nav__link">
+    <a href=".." class="md-nav__link">
       Overview
     </a>
   </li>
@@ -205,12 +210,10 @@
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Module 0: Environment Build
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Module 0: Environment Build" class="md-nav__link md-nav__link--active">
+    <a href="./" class="md-nav__link md-nav__link--active">
       Module 0: Environment Build
     </a>
     
@@ -222,31 +225,42 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#download-the-workshop-assets-from-github" class="md-nav__link">
-    Download the workshop assets from GitHub
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-s3-bucket-and-store-workshop-assets" class="md-nav__link">
-    Create S3 bucket and store workshop assets
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#determine-if-you-have-enabled-security-hub-config-and-guardduty" class="md-nav__link">
     Determine if you have enabled Security Hub, Config, and GuardDuty.
   </a>
+  
+    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, and GuardDuty.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -270,7 +284,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../01-security-hub-walk-through/" title="Module 1: Security Hub Walkthrough" class="md-nav__link">
+    <a href="../01-security-hub-walk-through/" class="md-nav__link">
       Module 1: Security Hub Walkthrough
     </a>
   </li>
@@ -282,7 +296,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../02-custom-insights-findings/" title="Module 2: Custom Insights & Findings" class="md-nav__link">
+    <a href="../02-custom-insights-findings/" class="md-nav__link">
       Module 2: Custom Insights & Findings
     </a>
   </li>
@@ -294,7 +308,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../03-remediation-and-response/" title="Module 3: Remediation & Response" class="md-nav__link">
+    <a href="../03-remediation-and-response/" class="md-nav__link">
       Module 3: Remediation & Response
     </a>
   </li>
@@ -306,7 +320,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../04-enrichment-and-integration/" title="Module 4: Enrichment & Integration" class="md-nav__link">
+    <a href="../04-enrichment-and-integration/" class="md-nav__link">
       Module 4: Enrichment & Integration
     </a>
   </li>
@@ -318,7 +332,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../contribute/" title="Contributing" class="md-nav__link">
+    <a href="../contribute/" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -330,7 +344,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../LICENSE" title="License" class="md-nav__link">
+    <a href="../LICENSE" class="md-nav__link">
       License
     </a>
   </li>
@@ -354,31 +368,42 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#download-the-workshop-assets-from-github" class="md-nav__link">
-    Download the workshop assets from GitHub
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-s3-bucket-and-store-workshop-assets" class="md-nav__link">
-    Create S3 bucket and store workshop assets
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#determine-if-you-have-enabled-security-hub-config-and-guardduty" class="md-nav__link">
     Determine if you have enabled Security Hub, Config, and GuardDuty.
   </a>
+  
+    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, and GuardDuty.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -406,93 +431,20 @@
                   </a>
                 
                 
-                  
-                
-                
                 <h1 id="environment-setup">Environment Setup</h1>
-<p>This workshop's procedures use multiple Lambda functions, EC2 instances, and other AWS resources created via CloudFormation templates. In this module, you will copy the essential contents from the workshop GitHub repository and upload them into an S3 bucket in the AWS account you are using to perform the workshop.</p>
+<p>This workshop's procedures use multiple Lambda functions, EC2 instances, and other AWS resources created via CloudFormation templates. In this module, you will ensure that the right security services are configured and then deploy the template to create the overall workshop resources.</p>
 <p><strong>Agenda</strong></p>
 <ol>
-<li>Download the workshop assets from GitHub - 5 min</li>
-<li>Create S3 bucket and store workshop assets – 5 min</li>
 <li>Determine if have already enabled Security Hub, Config, and GuardDuty - 5 min</li>
 <li>Deploy workshop CloudFormation stack  - 10 min</li>
 </ol>
-<h2 id="download-the-workshop-assets-from-github">Download the workshop assets from GitHub</h2>
-<ol>
-<li>
-<p>Navigate to <a href ='https://github.com/aws-samples/aws-security-hub-workshop/blob/master/deploy/aws-security-hub-workshop-deploy.zip' target="_blank"> GitHub Zip Download </a></p>
-</li>
-<li>
-<p>Click <strong>Download</strong> to download the <strong>aws-security-hub-workshop-deploy.zip</strong> file to your local computer in a location that you can easily find.</p>
-</li>
-<li>
-<p>Unzip the file on your local computer.  This will unzip the files to a directory named <strong>deploy</strong>.  </p>
-</li>
-</ol>
-<h2 id="create-s3-bucket-and-store-workshop-assets">Create S3 bucket and store workshop assets</h2>
-<ol>
-<li>
-<p>Navigate to <strong>S3 Console</strong> and click <strong>Create bucket</strong>. </p>
-</li>
-<li>
-<p>Provide your own <strong>bucket name</strong> and do not adjust the default settings blocking public access.  </p>
-</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">S3 Bucket name needs to be unique.  You might have to add some additional numbers to the end of your desired name to make it unique.</p>
-</div>
-<ol>
-<li>
-<p><strong>Record</strong> the bucket name for later use.</p>
-</li>
-<li>
-<p>Click <strong>Create bucket</strong>. </p>
-</li>
-</ol>
-<p><img alt="Setup" src="../images/00-create-bucket.png" /></p>
-<ol>
-<li>
-<p>Click your <strong>bucket name</strong> to navigate into your bucket.</p>
-</li>
-<li>
-<p>From your local computer, upload the <strong>contents</strong> of the unzipped <strong>/deploy/</strong> directory into the root of your newly created bucket. </p>
-</li>
-</ol>
-<p><img alt="Setup" src="../images/00-bucket-contents.png" /></p>
-<div class="admonition warning">
-<p class="admonition-title">Do not proceed unless you have 12 files in the root of this bucket.</p>
-</div>
 <h2 id="determine-if-you-have-enabled-security-hub-config-and-guardduty">Determine if you have enabled Security Hub, Config, and GuardDuty.</h2>
 <p>Config, Security Hub, and GuardDuty must be enabled in the account and region you are conducting this workshop in.  The CloudFormation template that sets up the workshop has the option to enable all of this for you.  If you choose for that to happen, and these services are already enabled, the template will fail.</p>
 <p>In order to correctly perform the next step, you must confirm the status of each of these services.  If you already know the status, such as a fresh account provided by AWS for this workshop, proceed to the next section.</p>
-<ol>
-<li>
-<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
-</li>
-<li>
-<p>Type <strong>Security Hub</strong> in the services search bar.</p>
-</li>
-<li>
-<p>Select <strong>Security Hub</strong> from the list.</p>
-</li>
-</ol>
 <p><img alt="AWS Console" src="../images/01-aws-console.png" /></p>
 <ol>
 <li>
-<p>If you see  <strong>Go to Security Hub</strong> on the right side of the page, Security Hub is <strong>not</strong> enabled.</p>
-</li>
-<li>
-<p>Click <strong>Services</strong> in the top left corner.</p>
-</li>
-<li>
-<p>Type <strong>GuardDuty</strong> in the search bar, and select <strong>GuardDuty</strong> from the list.</p>
-</li>
-<li>
-<p>If you see <strong>Get started</strong> in the center of the page, GuardDuty is <strong>not</strong> enabled.</p>
-</li>
-<li>
-<p>Click <strong>Services</strong> in the top left corner.</p>
+<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
 </li>
 <li>
 <p>Type <strong>Config</strong> in the search bar, and select <strong>Config</strong> from the list.</p>
@@ -501,56 +453,138 @@
 <p>If you see <strong>Get started</strong> in the center of the page, Config is <strong>not</strong> enabled.</p>
 </li>
 </ol>
+<details class="info"><summary>Optional Step: Click here for instructions on how to manually enable and set up AWS Config.</summary><ol>
+<li>
+<p>From the <a href="https://console.aws.amazon.com/config/home" target="_blank">AWS Config dashboard</a>, click <strong>Get Started</strong></p>
+</li>
+<li>
+<p>Step 1: Settings - Leave all of the default settings. Click <strong>Next</strong>. This will record all resources supported in this region and create a bucket to log data. It will also create an AWS Config service-linked role granting AWS Config the access recorded for it to function.</p>
+</li>
+<li>
+<p>Step 2: Rules - Under the field to filter by rule name, click <strong>Select All</strong>. This will highlight the AWS Config rules displayed. Then click <strong>Next</strong>. In your actual environment, you may want to pick and choose which rules are appropriate to enable for your workload.</p>
+</li>
+<li>
+<p>Step 3: Review - Click <strong>Confirm</strong>.</p>
+</li>
+</ol>
+</details>
+<h3 id="_1"></h3>
+<ol>
+<li>
+<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
+</li>
+<li>
+<p>Type <strong>GuardDuty</strong> in the search bar, and select <strong>GuardDuty</strong> from the list.</p>
+</li>
+<li>
+<p>If you see <strong>Get started</strong> in the center of the page, GuardDuty is <strong>not</strong> enabled.</p>
+</li>
+</ol>
+<details class="info"><summary>Optional Step: Click here for instructions on how to manually enable and set up GuardDuty.</summary><ol>
+<li>
+<p>From the <a href="https://console.aws.amazon.com/guardduty/home" target="_blank">GuardDuty page</a>, click <strong>Get Started</strong>.</p>
+</li>
+<li>
+<p>On the "Welcome to GuardDuty" screen, click <strong>Enable GuardDuty</strong>.</p>
+</li>
+</ol>
+</details>
+<h3 id="_2"></h3>
+<ol>
+<li>
+<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
+</li>
+<li>
+<p>Type <strong>Security Hub</strong> in the services search bar, and select <strong>Security Hub</strong> from the list.</p>
+</li>
+<li>
+<p>If you see  <strong>Go to Security Hub</strong> on the right side of the page, Security Hub is <strong>not</strong> enabled.</p>
+</li>
+</ol>
+<details class="info"><summary>Optional Step: Click here for instructions on how to manually enable and set up AWS Security Hub.</summary><ol>
+<li>
+<p>From the <a href="https://console.aws.amazon.com/securityhub/home" target="_blank">AWS Security Hub page</a>, click <strong>Go to Security Hub</strong></p>
+</li>
+<li>
+<p>On the "Welcome to AWS Security Hub" screen, check the boxes for all of the Security Standards. Then click <strong>Enable Security Hub</strong>.</p>
+</li>
+</ol>
+</details>
+<h3 id="_3"></h3>
 <h2 id="deploy-workshop-cloudformation-stack">Deploy workshop CloudFormation stack</h2>
-<ol>
-<li>
-<p>Navigate to <strong>CloudFormation Console</strong>. </p>
-</li>
-<li>
-<p>Click <strong>Create stack</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Amazon S3 URL</strong>, add the path to your setup template. Replace [YOUR-BUCKET-NAME] in the example below.</p>
-</li>
-</ol>
-<div class="codehilite"><pre><span></span><code><span class="c">https://[YOUR-BUCKET-NAME].s3.amazonaws.com/sechub-workshop-setup-template.json</span>
-</code></pre></div>
-
-
-<ol>
-<li>
-<p>Click <strong>Next</strong> on Create stack page.</p>
-</li>
-<li>
-<p>Provide your <strong>Stack name</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Parameters</strong> section, select <strong>Yes</strong> (DO ENABLE) or <strong>No</strong> for each of the three services checked in the prior section; GuardDuty, SecurityHub, and Config.  </p>
-</li>
-<li>
-<p>Enter the name of the S3 deployment bucket you created and stored the workshop artifacts in.   Leave remaining parameters with their default value.</p>
-</li>
-</ol>
-<p><img alt="Setup" src="../images/00-stack-details.png" /></p>
-<ol>
-<li>
-<p>Click <strong>Next</strong> on Specify stack details page.</p>
-</li>
-<li>
-<p>Click <strong>Next</strong> on Configure stack options page.</p>
-</li>
-<li>
-<p>Scroll to the bottom and <strong>check</strong> both acknowledgments. </p>
-</li>
-</ol>
-<p><img alt="Setup" src="../images/00-stack-acknowledge.png" /></p>
-<ol>
-<li>Click <strong>Create Stack</strong>. </li>
-</ol>
+<p>To configure the workshop you will need to deploy the master workshop template.</p>
 <div class="admonition info">
-<p class="admonition-title">Use the refresh button to see updates as this template will create five nested templates and should take 5-10 minutes to complete.  Once the full stack creation is done you should see findings created in Security Hub over next 30 minutes of this workshop.</p>
+<p class="admonition-title">Before you deploy the CloudFormation template feel free to view it <a href="https://github.com/aws-samples/aws-security-hub-workshop/blob/master/templates/sechub-workshop-setup-template.json" target="_blank">here</a href>.</p>
 </div>
-<p>In this module, you created an S3 bucket, transferred the workshop artifacts, and deployed the setup templates.  After you have successfully created the stack, you can proceed to the next module.</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Deploy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US West 2 (Oregon)</td>
+<td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=SecurityHubWorkshop&templateURL=https://sa-security-specialist-workshops-us-west-2.s3-us-west-2.amazonaws.com/security-hub-workshop/templates/sechub-workshop-setup-template.json" target="_blank"><img alt="Deploy Module 1 in us-west-2" src="../images/deploy-to-aws.png" /></a></td>
+</tr>
+<tr>
+<td>US East 1 (Virgina)</td>
+<td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=SecurityHubWorkshop&templateURL=https://sa-security-specialist-workshops-us-east-1.s3.amazonaws.com/security-hub-workshop/templates/sechub-workshop-setup-template.json" target="_blank"><img alt="Deploy Module 1 in us-east1" src="../images/deploy-to-aws.png" /></a></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>Click the <strong>Deploy to AWS</strong> button above.  This will automatically take you to the console to run the template, click Next to get to the Specify Details page. </p>
+</li>
+<li>
+<p>On the <strong>Specify Details</strong> section enter the necessary parameters as shown below. </p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stack name</td>
+<td>SecurityHubWkshp</td>
+</tr>
+<tr>
+<td>EnableGuardDuty</td>
+<td><strong>Yes-Enable GuardDuty</strong> or <strong>No-GuardDuty is already enabled</strong></td>
+</tr>
+<tr>
+<td>EnableSecurityHub</td>
+<td><strong>Yes-Enable Security Hub</strong> or <strong>No-Security Hub is already enabled</strong></td>
+</tr>
+<tr>
+<td>EnableConfig</td>
+<td><strong>Yes-Enable Config</strong> or <strong>No-Config is already enabled</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leave all other parameters with their default values</strong></p>
+</li>
+<li>
+<p>Once you have entered your parameters click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong> again. (leave everything on this page at the default)</p>
+</li>
+<li>
+<p>Finally, scroll down and check the boxes to acknowledge that the template will create IAM resources and that the template will need CAPABILITY_AUTO_EXPAND.  Then click <strong>Create</strong>.</p>
+</li>
+</ol>
+<p><img alt="IAM Capabilities" src="../images/00-stack-acknowledge.png" /></p>
+<p>This will bring you back to the CloudFormation console. You can refresh the page to see the stack starting to create. This template will create five nested templates and should take 5-10 minutes to complete.  Before moving on, make sure the stack is in a <strong>CREATE_COMPLETE</strong> status as shown below.</p>
+<p><img alt="Stack Complete" src="../images/01-stack-complete.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Once the full stack creation is done you should see findings created in Security Hub over the next 30 minutes of this workshop.</p>
+</div>
+<p>After you have successfully created the stack, you can proceed to the next module.</p>
                 
               
               
@@ -569,7 +603,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href=".." title="Overview" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -584,7 +618,7 @@
           </a>
         
         
-          <a href="../01-security-hub-walk-through/" title="Module 1: Security Hub Walkthrough" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../01-security-hub-walk-through/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
@@ -661,15 +695,15 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "..",
           features: [],
           search: Object.assign({
-            worker: "../assets/javascripts/worker/search.a68abb33.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
