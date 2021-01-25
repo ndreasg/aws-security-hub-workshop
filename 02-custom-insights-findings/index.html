@@ -456,17 +456,15 @@
 </li>
 <li>
 <p>Click on the <strong>Create rule</strong> on the right side.</p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-eventbridge.png" /></p>
-<ol>
-<li>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</li>
-</ol>
+</li>
+<li>
+<p>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</p>
 <p><img alt="Custom Action" src="../images/02-custom-create-rule.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">All Config Rule output is sent as events to the AWS default event bus.  The define pattern section allows you to identify filters to take a specific action when matched events appear.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Under Define pattern, select <strong>Event pattern</strong>. </p>
 </li>
@@ -484,18 +482,18 @@
 </li>
 <li>
 <p>Chose the <strong>Specific rule name(s)</strong> radio button and enter <strong>approved-amis-by-id</strong> in the text box.</p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/02-custom-create-event-source.png" /></p>
-<ol>
-<li>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>ec2-non-compliant-ami-sechub</strong> lambda function. </li>
-</ol>
+</li>
+<li>
+<p>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>ec2-non-compliant-ami-sechub</strong> lambda function. </p>
 <p><img alt="Custom Action" src="../images/02-custom-create-confirm.png" /></p>
 <div class="admonition info">
 <p class="admonition-title"><strong>ec2-non-compliant-ami-sechub</strong> is a custom Lambda function created during the setup of this workshop.  Feel free to look at the function to learn more about how it integrates with Security Hub.</p>
 </div>
-<ol>
-<li>Click <strong>Create</strong>.</li>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
 </ol>
 <h3 id="create-a-rule-to-track-approved-amis">Create a rule to track approved AMIs</h3>
 <p>This section will run the Config rule to generate information on noncompliant resources and send them to Security Hub.</p>
@@ -505,18 +503,16 @@
 </li>
 <li>
 <p>From the Config Dashboard click <strong>Rules</strong> on the left menu.</p>
-</li>
-</ol>
 <p><img alt="Config" src="../images/02-config-dashboard.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Make sure to not choose Rules from the Aggregated view menu.  This requires Config Aggregator and this feature is not used in this workshop.</p>
 </div>
-<ol>
-<li>In the Rules page there will be one rule named <strong>approved-amis-by-id</strong>.  Click on the rule name to go to the detail page for that rule.  </li>
-</ol>
+</li>
+<li>
+<p>In the Rules page there will be one rule named <strong>approved-amis-by-id</strong>.  Click on the rule name to go to the detail page for that rule.  </p>
 <p>In the rule detail screen you will see the rule configured with a list of approved AMIs.  There will also be one resource showing as noncompliant. Now that the EventBridge is in place you want to see the noncompliant instances show in Security Hub as a finding.</p>
 <p><img alt="Config" src="../images/02-approved-ami-config-rule.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click on the <strong>Delete results</strong> button.  In the confirmation popup click <strong>Delete</strong>.</p>
 </li>
@@ -541,9 +537,9 @@
 </li>
 <li>
 <p>You should see a rule towards the top of the findings list with a <strong>Company</strong> of <strong>Personal</strong> and a <strong>Title</strong> about an unapproved AMI for an instance.  This is the result of your compliance rule and its integration with EventBridge.  Click on the <strong>Title</strong> link for the finding to view more details for your finding.</p>
+<p><img alt="Config" src="../images/02-unapproved-ami-finding.png" /></p>
 </li>
 </ol>
-<p><img alt="Config" src="../images/02-unapproved-ami-finding.png" /></p>
 <p>You now have a setup in place that helps demonstrate how you can send custom findings into Security Hub using AWS data sources and EventBridge rules.</p>
 <div class="admonition info">
 <p class="admonition-title">In your environment the Lambda function <strong>find-secrets-without-rotation</strong> checks for secrets that have a rotation time that is beyond the max days parameter on the function.  When secrets are found with a rotation time beyond what is defined in the function a finding is created in Security Hub.  Take some time to explore the Lambda function to see how you can directly send custom findings into Security Hub.</p>
@@ -568,7 +564,7 @@
 </li>
 <li>
 <p>Choose a filter field of <strong>Company name</strong>.  Choose a filter match type of <strong>IS</strong> and a value of <strong>Personal</strong>.
-<img alt="Config" src="../images/02-create-custom-insight-company-filter.png" /></p>
+    <img alt="Config" src="../images/02-create-custom-insight-company-filter.png" /></p>
 </li>
 <li>
 <p>Choose a filter field of <strong>Product name</strong>.  Choose a filter match type of <strong>IS</strong> and a value of <strong>Default</strong>.</p>
@@ -582,7 +578,7 @@
 </li>
 <li>
 <p>Give your insight a name that is meaningful to you and click <strong>Create insight</strong>.
-<img alt="Config" src="../images/02-create-custom-insight-name.png" /></p>
+    <img alt="Config" src="../images/02-create-custom-insight-name.png" /></p>
 </li>
 <li>
 <p><strong>Refresh</strong> your browser to reload the screen with Graphs.</p>

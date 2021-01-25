@@ -577,12 +577,12 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Fill in the following details for your app:  </p>
-</li>
+<ul>
 <li><strong>App Name</strong>: security-hub-to-slack </li>
 <li><strong>Development Slack Workspace</strong>: Choose the Slack workspace that will receive the Security Hub findings ( this is the one you created)  </li>
-</ol>
+</ul>
 <p><img alt="SlackApp" src="../images/04-slack-create-app.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click the <strong>Create App</strong> Button.</p>
 </li>
@@ -597,11 +597,11 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>In the screen asking where your app should post choose the channel that you created in an earlier step.</p>
-</li>
-</ol>
 <p><img alt="SlackAppChannel" src="../images/04-slack-app-channel-choose.png" /></p>
-<ol>
-<li>On the next screen, scroll down to the Webhook URL section and save the URL as you will need it later to complete your setup.</li>
+</li>
+<li>
+<p>On the next screen, scroll down to the Webhook URL section and save the URL as you will need it later to complete your setup.</p>
+</li>
 </ol>
 <h3 id="create-custom-action-in-security-hub">Create Custom Action in Security Hub</h3>
 <p>To send information on findings that are in Security Hub to Slack a custom action in Security Hub needs to be defined. The following steps outline how to set up a custom action: </p>
@@ -611,19 +611,19 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Click on <strong>Settings</strong>. </p>
-</li>
-</ol>
 <p><img alt="ChatOps" src="../images/04-chatops-sechub.png" /></p>
-<ol>
-<li>Click <strong>Custom Actions</strong>.</li>
-</ol>
+</li>
+<li>
+<p>Click <strong>Custom Actions</strong>.</p>
 <p><img alt="ChatOps" src="../images/04-chatops-sechub-settings.png" /></p>
-<ol>
-<li>Select Create Custom Action. Fill in: </li>
+</li>
+<li>
+<p>Select Create Custom Action. Fill in: </p>
+<ul>
 <li><strong>Action Name</strong> as ‘Send to Slack’, </li>
 <li><strong>Description</strong> as ‘Custom action to send security findings to Slack.’ </li>
-<li>
-<p><strong>Custom Action ID</strong> as shslaction </p>
+<li><strong>Custom Action ID</strong> as shslaction </li>
+</ul>
 </li>
 <li>
 <p>Click <strong>Create custom action</strong>.</p>
@@ -638,17 +638,15 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Click on the <strong>Create rule</strong> on the right side.</p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-eventbridge.png" /></p>
-<ol>
-<li>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</li>
-</ol>
+</li>
+<li>
+<p>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</p>
 <p><img alt="ChatOps" src="../images/04-chatops-custom-create-rule.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">All Security Hub findings are sent as events to the AWS default event bus.  The define pattern section allows you to identify filters to take a specific action when matched events appear.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Under Define pattern, select <strong>Event pattern</strong>. </p>
 </li>
@@ -663,47 +661,41 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>In the drop down for <strong>Event type</strong> choose <strong>Security Hub Finding – Custom Action</strong>.</p>
-</li>
-</ol>
 <p><img alt="ChatOps" src="../images/03-custom-create-event-source.png" /></p>
-<ol>
+</li>
 <li>
 <p>In the <strong>Event Pattern</strong> window click the <strong>Edit</strong> button. </p>
 </li>
 <li>
 <p>Add in the resources line as shown below, making sure to copy in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
 </div>
 <p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span> 
-<span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;aws.securityhub&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;detail-type&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;Security Hub Findings - Custom Action&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span> 
-     <span class="s2">&quot;arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/shslaction&quot;</span> 
-  <span class="p">]</span> 
-<span class="p">}</span> 
-</code></pre></div>
-
-
+<p><pre>
+<code>{ 
+"source": [ 
+    "aws.securityhub" 
+  ], 
+  "detail-type": [ 
+    "Security Hub Findings - Custom Action" 
+  ], 
+  "resources": [ 
+     "arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/shslaction" 
+  ] 
+}</code></p>
 <p><img alt="ChatOps" src="../images/04-chatops-create-event-pattern-updated.png" /></p>
-<ol>
+</li>
 <li>
 <p>Under Select targets, select <strong>Lambda function</strong>.</p>
 </li>
 <li>
 <p>Then select the <strong>sechub-to-slack</strong> lambda function. </p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/04-slack-lambda-create-confirm.png" /></p>
-<ol>
-<li>Click <strong>Create</strong>.</li>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
 </ol>
 <h3 id="update-the-lambda-function-to-send-messages-to-slack">Update the Lambda Function to send messages to Slack</h3>
 <p>The last step in this setup is to update the environment variables of your lambda function so that notifications can be sent to the correct Slack workspace.</p>
@@ -716,13 +708,15 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Scroll down to environment variables and click <strong>Edit</strong>   Fill in:</p>
-</li>
+<ul>
 <li><strong>slackChannel:</strong> the value from the Slack channel you created earlier in this workshop.</li>
 <li><strong>webHookUrl:</strong> URL of the webhook for the Slack setup you created earlier in this workshop.</li>
-</ol>
+</ul>
 <p><img alt="Lambda Slack Env" src="../images/04-slack-lambda-env.png" /></p>
-<ol>
-<li>Click <strong>Save</strong>.</li>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
 </ol>
 <h3 id="testing-the-integration-between-security-hub-and-slack">Testing the Integration between Security Hub and Slack</h3>
 <p>At this point, you are now able to start using a Security Hub custom action to send Findings to Slack. </p>
@@ -735,16 +729,16 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Choose any one of the findings and then select the <strong>Send to Slack</strong> custom action from the <strong>Actions</strong> drop down. A success message appears indicating the event was sent to CloudWatch events. </p>
-</li>
-</ol>
 <p><img alt="ChatOps" src="../images/04-chatops-slack-send.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Your custom actions drop down list will have more options than displayed here.</p>
 </div>
-<ol>
-<li>In <strong>Slack</strong>, navigate to your channel to see the finding that was sent from Security Hub. </li>
-</ol>
+</li>
+<li>
+<p>In <strong>Slack</strong>, navigate to your channel to see the finding that was sent from Security Hub. </p>
 <p><img alt="ChatOps" src="../images/04-chatops-slack-confirm.png" /></p>
+</li>
+</ol>
 <h2 id="enable-custom-action-to-add-tag-data-as-notes-to-security-hub-findings">Enable Custom Action to add Tag data as Notes to Security Hub Findings</h2>
 <p>In this section you will follow the same pattern of creating a Security Hub custom action and EventBridge rule to Lambda.  The custom Lambda function will look up the tags for an EC2 instance, and the resulting tag information will be added to the selected Security Hub finding as a note.</p>
 <h3 id="create-security-hub-custom-action">Create Security Hub Custom Action</h3>
@@ -763,10 +757,8 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Enter an Action <strong>Name</strong> (Displayed in the Security Hub Console), <strong>Action Description</strong>, and an <strong>Action ID</strong> of "getTags".</p>
-</li>
-</ol>
 <p><img alt="Enrich" src="../images/04-enrich-custom-action-create.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>Create custom action</strong>. </p>
 </li>
@@ -808,28 +800,24 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Add in the resources line as shown below, making sure to copy in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
 </div>
 <p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span> 
-<span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;aws.securityhub&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;detail-type&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;Security Hub Findings - Custom Action&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span> 
-     <span class="s2">&quot;arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/getTags&quot;</span> 
-  <span class="p">]</span> 
-<span class="p">}</span> 
-</code></pre></div>
-
-
-<p><img alt="Enrich" src="../images/04-enrich-create-event-pattern-updated.png" /></p>
-<ol>
+<p><pre>
+<code>{ 
+"source": [ 
+    "aws.securityhub" 
+  ], 
+  "detail-type": [ 
+    "Security Hub Findings - Custom Action" 
+  ], 
+  "resources": [ 
+     "arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/getTags" 
+  ] 
+}</code>
+<img alt="Enrich" src="../images/04-enrich-create-event-pattern-updated.png" /></p>
+</li>
 <li>
 <p>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>enrich-sec-hub-finding</strong> lambda function. </p>
 </li>
@@ -850,18 +838,12 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Add <strong>AwsEc2Instance</strong> (case sensitive) after EQUALS and click <strong>Apply</strong>.</p>
-</li>
-</ol>
-<div class="codehilite"><pre><span></span><code><span class="err">AwsEc2Instance</span>
-</code></pre></div>
-
-
 <p><img alt="Enrich" src="../images/04-enrich-sechub-filter.png" /></p>
-<ol>
-<li><strong>Click the Title</strong> of the first finding in the list and observe that there are currently no <strong>notes</strong> in this finding.</li>
-</ol>
+</li>
+<li>
+<p><strong>Click the Title</strong> of the first finding in the list and observe that there are currently no <strong>notes</strong> in this finding.</p>
 <p><img alt="Enrich" src="../images/04-enrich-finding-before.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click the <strong>check box</strong> to the left of this same finding.</p>
 </li>
@@ -873,9 +855,9 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p><strong>Click the Title</strong> of the first finding again, and this time view the Notes.</p>
+<p><img alt="Enrich" src="../images/04-enrich-finding-after.png" /></p>
 </li>
 </ol>
-<p><img alt="Enrich" src="../images/04-enrich-finding-after.png" /></p>
 <div class="admonition question">
 <p class="admonition-title">What other data would you add to findings ad-hoc or automatically?</p>
 </div>

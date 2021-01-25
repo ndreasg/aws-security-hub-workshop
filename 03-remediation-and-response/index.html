@@ -482,21 +482,19 @@
 </li>
 <li>
 <p>Enter an Action Name, Action Description, and an Action ID that are representative of an action that would isolate an EC2 instance. </p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-action-create.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>Create custom action</strong>.</p>
 </li>
 <li>
 <p>Copy the Custom action ARN that was generated for your custom finding.</p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">You will need the Custom ARN in the next steps.</p>
 </div>
 <p><img alt="Custom Action" src="../images/03-custom-action-review.png" /></p>
+</li>
+</ol>
 <h3 id="create-amazon-eventbridge-rule-to-capture-the-custom-action">Create Amazon EventBridge Rule to capture the Custom Action</h3>
 <p>Events from AWS services are delivered to CloudWatch Events and Amazon EventBridge in near real time. You can write simple rules to indicate which events you're interested in and what automated actions to take when an event matches a rule. The actions that can be automatically triggered include: an AWS Lambda function, Amazon EC2 Run Command, Relaying the event to Amazon Kinesis Data Streams, an AWS Step Functions state machine, an Amazon SNS topic, a ECS task, and others.</p>
 <p>In this section, you will define an EventBridge rule that will match events (Findings) coming from Security Hub which were forwarded by the custom action you defined above. </p>
@@ -506,17 +504,15 @@
 </li>
 <li>
 <p>Click on the <strong>Create rule</strong> on the right side.</p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-eventbridge.png" /></p>
-<ol>
-<li>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</li>
-</ol>
+</li>
+<li>
+<p>In the Create rule page give your rule a <strong>name</strong> and a <strong>description</strong> that represents the rule's purpose.</p>
 <p><img alt="Custom Action" src="../images/03-custom-create-rule.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">All Security Hub findings are sent as events to the AWS default event bus.  The define pattern section allows you to identify filters to take a specific action when matched events appear.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Under Define pattern, select <strong>Event pattern</strong>. </p>
 </li>
@@ -531,45 +527,41 @@
 </li>
 <li>
 <p>In the drop down for <strong>Event type</strong> choose <strong>Security Hub Finding – Custom Action</strong>.</p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-create-event-source.png" /></p>
-<ol>
+</li>
 <li>
 <p>In the <strong>Event Pattern</strong> window click the <strong>Edit</strong> button. </p>
 </li>
 <li>
 <p>Add in the resources line as shown below, making sure to paste in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
 </div>
 <p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span> 
-<span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;aws.securityhub&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;detail-type&quot;</span><span class="p">:</span> <span class="p">[</span> 
-    <span class="s2">&quot;Security Hub Findings - Custom Action&quot;</span> 
-  <span class="p">],</span> 
-  <span class="nt">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span> 
-     <span class="s2">&quot;arn:aws:securityhub:[YOUR-REGION]:[YOUR-ACCOUNT-ID]:action/custom/IsolateInstance&quot;</span> 
-  <span class="p">]</span> 
-<span class="p">}</span> 
-</code></pre></div>
-
-
+<p><pre>
+<code>{ 
+"source": [ 
+    "aws.securityhub" 
+    ], 
+    "detail-type": [ 
+        "Security Hub Findings - Custom Action" 
+    ], 
+    "resources": [ 
+        "arn:aws:securityhub:[YOUR-REGION]:[YOUR-ACCOUNT-ID]:action/custom/IsolateInstance" 
+    ] 
+}</code></p>
 <p><img alt="Custom Action" src="../images/03-custom-create-event-source-updated.png" /></p>
-<ol>
-<li>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>isolate-ec2-security-group</strong> Lambda function. </li>
-</ol>
+</li>
+<li>
+<p>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>isolate-ec2-security-group</strong> Lambda function. </p>
 <p><img alt="Custom Action" src="../images/03-custom-create-confirm.png" /></p>
 <div class="admonition info">
 <p class="admonition-title"><strong>isolate-ec2-security-groups</strong> is a custom Lambda function created during the setup of this workshop.</p>
 </div>
-<ol>
-<li>Click <strong>Create</strong>.</li>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
 </ol>
 <h3 id="isolate-the-security-group-on-an-ec2-instance">Isolate the security group on an EC2 Instance</h3>
 <p>Now you will test the response action starting from a Security Finding for an EC2 instance. </p>
@@ -581,14 +573,8 @@
 <p>In the left-hand navigation pane choose <strong>Findings</strong>.</p>
 </li>
 <li>
-<p>Add a filter for <strong>Resource Type</strong> and enter AwsEc2Instance (case sensitive)</p>
+<p>Add a filter for <strong>Resource Type</strong> and enter <strong>AwsEc2Instance</strong> (case sensitive).</p>
 </li>
-</ol>
-<div class="codehilite"><pre><span></span><code><span class="err">AwsEc2Instance</span>
-</code></pre></div>
-
-
-<ol>
 <li>
 <p>Click the title of any finding in this filtered list where the target is the type <strong>AwsEc2Instance</strong>.</p>
 </li>
@@ -597,41 +583,39 @@
 </li>
 <li>
 <p>Click the blue link for this EC2 instance, under the heading <strong>Resource ID</strong>. </p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">This will open a new tab showing on the EC2 console showing only this affected EC2 instance.</p>
 </div>
-<ol>
-<li>Click the instance record, and then click the <strong>Security</strong> tab and record the name of the current <strong>security group</strong>.</li>
-</ol>
+</li>
+<li>
+<p>Click the instance record, and then click the <strong>Security</strong> tab and record the name of the current <strong>security group</strong>.</p>
 <p><img alt="Custom Action" src="../images/03-security-group.png" /></p>
-<ol>
+</li>
 <li>
 <p>Go back to your <strong>Security Hub tab</strong> in your browser and click in the check box in the far left of this same finding.</p>
 </li>
 <li>
 <p>In the <strong>Actions</strong> drop down choose the name of your custom action to Isolate EC2 Instances. </p>
-</li>
-</ol>
 <p><img alt="Custom Action" src="../images/03-custom-action-execute.png" /></p>
-<ol>
-<li>Go back to the <strong>EC2 browser tab</strong>.  Refresh the tab.  Verify that the security group on the instance has been changed to the security team security group. </li>
-</ol>
+</li>
+<li>
+<p>Go back to the <strong>EC2 browser tab</strong>.  Refresh the tab.  Verify that the security group on the instance has been changed to the security team security group. </p>
 <div class="admonition question">
 <p class="admonition-title">Review the isolate-ec2-security-group Lambda function.  What changes would you make for your own custom actions?</p>
 </div>
+</li>
+</ol>
 <h2 id="deploy-remediation-playbooks-for-cis-benchmarks">Deploy remediation playbooks for CIS Benchmarks</h2>
 <p>By creating Security Hub custom actions mapped to specific finding type and by developing a corresponding Lambda function for that custom action, you can achieve targeted, automated remediation for these findings. This allows you to decide if you want to invoke a remediation action on a specific finding. You can also use these Lambda functions as the target of fully automated remediation actions that do not require any human review.</p>
 <p>You can read more in <a href = 'https://aws.amazon.com/blogs/security/automated-response-and-remediation-with-aws-security-hub/'  target="_blank">this blog</a> to select specific CIS benchmark remediations or customize response actions.</p>
 <h3 id="deploy-remediation-playbooks-via-cloudformation">Deploy remediation playbooks via CloudFormation</h3>
 <ol>
-<li>Download <a href ='https://github.com/aws-samples/aws-security-hub-response-and-remediation/blob/master/SecurityHub_CISPlaybooks_CloudFormation.yaml' target="_blank">CloudFormation template </a> from GitHub.</li>
-</ol>
+<li>
+<p>Download <a href ='https://github.com/aws-samples/aws-security-hub-response-and-remediation/blob/master/SecurityHub_CISPlaybooks_CloudFormation.yaml' target="_blank">CloudFormation template </a> from GitHub.</p>
 <div class="admonition info">
 <p class="admonition-title">If you are not familiar with github downloads: 1. Click RAW 2. Save As... from your browser.  Some browsers will require you to add .yaml at the end of the file name.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Navigate to <strong>Cloudformation Stacks</strong> console.</p>
 </li>
@@ -661,23 +645,21 @@
 </li>
 <li>
 <p>Click <strong>Create stack</strong>.</p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Please wait a moment for the creation to complete or progress to start, then proceed to Step 11.</p>
 </div>
-<ol>
-<li>Navigate to the <strong>Resources</strong> tab of this CloudFormation stack and observe the resources created for each rule.</li>
-</ol>
+</li>
+<li>
+<p>Navigate to the <strong>Resources</strong> tab of this CloudFormation stack and observe the resources created for each rule.</p>
 <p><img alt="remediation" src="../images/03-remediation-playbook-resources.png" /></p>
-<ol>
-<li>Type "<strong>CIS28</strong>" in Search resources bar. </li>
-</ol>
+</li>
+<li>
+<p>Type "<strong>CIS28</strong>" in Search resources bar. </p>
 <p><img alt="remediation" src="../images/03-remediation-playbook-cis28.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Note the resources created for this remediation action are a EventBridge Rule that connects the custom action to the Lambda function, an IAM role and permission for Lambda to assume and take the needed actions, A Lambda function with the code to execute the response, and a Security Hub custom action to initiate the remediation.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Navigate to the <strong>Security Hub</strong> dashboard. </p>
 </li>
@@ -686,30 +668,26 @@
 </li>
 <li>
 <p>Under CIS AWS Foundations Benchmark v1.2.0 click <strong>View results</strong>.</p>
-</li>
-</ol>
 <p><img alt="remediation" src="../images/03-remediation-security-standards.png" /></p>
-<ol>
-<li>Type "<strong>2.8</strong>" in the Filter controls bar.</li>
-</ol>
+</li>
+<li>
+<p>Type "<strong>2.8</strong>" in the Filter controls bar.</p>
 <div class="admonition info">
 <p class="admonition-title">AWS KMS enables customers to rotate the backing key, which is key material stored in AWS KMS and is tied to the key ID of the CMK. It's the backing key that is used to perform cryptographic operations such as encryption and decryption. Automated key rotation currently retains all previous backing keys so that decryption of encrypted data can take place transparently.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">We recommend that you enable CMK key rotation. Rotating encryption keys helps reduce the potential impact of a compromised key because data encrypted with a new key can't be accessed with a previous key that might have been exposed.</p>
 </div>
-<ol>
-<li>Click the title for "CIS 2.8 Ensure rotation for customer created CMKs is enabled"</li>
-</ol>
+</li>
+<li>
+<p>Click the title for "CIS 2.8 Ensure rotation for customer created CMKs is enabled"</p>
 <p><img alt="remediation" src="../images/03-remediation-cis28-check.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click the <strong>check box</strong> to select the finding.</p>
 </li>
 <li>
 <p>Click the <strong>Actions</strong> drop down on the right side and select <strong>CIS 2.8 RR</strong>.</p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">This triggers the remediation Lambda function associated with resolving CIS 2.8.  Notice the list of available actions you have for CIS created from the template deployment.</p>
 </div>
@@ -720,24 +698,22 @@
 <div class="admonition info">
 <p class="admonition-title">After the green bar has confirmed the execution of the custom check, we need to manually initiate a re-evaluation in Config in order to resolve the finding in Security Hub.</p>
 </div>
-<ol>
+</li>
 <li>
 <p>Click the three vertical dots to expand associated links to Config.</p>
 </li>
 <li>
 <p>Click the button for <strong>Config Rule</strong>.</p>
-</li>
-</ol>
 <p><img alt="remediation" src="../images/03-remediation-cis28-rule.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>Re-evaluate</strong> at the top of the page.</p>
 </li>
 <li>
 <p>Click the browser tab to return to the filtered findings for CIS 2.8 and refresh your browser. The findings should now have a status of PASSED.</p>
+<p><img alt="remediation" src="../images/03-remediation-cis28-passed.png" /></p>
 </li>
 </ol>
-<p><img alt="remediation" src="../images/03-remediation-cis28-passed.png" /></p>
 <p>In this module you associated a custom action in Security Hub with a custom Lambda function for remediation and deployed a series of pre-build remediations for CIS Account Foundational checks.  After you have successfully tested your response to CIS 2.8, you can proceed to the next module.</p>
                 
               

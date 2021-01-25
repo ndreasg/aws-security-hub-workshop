@@ -457,30 +457,27 @@
 </li>
 <li>
 <p>Select <strong>Security Hub</strong> from the list.</p>
-</li>
-</ol>
 <p><img alt="AWS Console" src="../images/01-aws-console.png" /></p>
-<ol>
-<li>Click <strong>Summary</strong> on the left hand navigation.</li>
-</ol>
+</li>
+<li>
+<p>Click <strong>Summary</strong> on the left hand navigation.</p>
 <p><img alt="Security Hub Summary" src="../images/01-sec-hub-summary.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Security Hub automatically enables subscriptions to GuardDuty and Inspector.  Also collected, but not used in this workshop are findings from Macie, IAM Access Analyzer, and Firewall Manager.</p>
 </div>
-<ol>
-<li>Observe the Passed and Failed status of the <strong>CIS AWS Foundations</strong>.  Even though you just enabled it a few minutes ago, partial results of the 43 total checks have been collected.</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Refresh your browser to see the latest results.  After you enable a security standard, AWS Security Hub begins to run the checks within 2 hours.  After the initial check, the schedule for each control may be either periodic (12 hours) or change-triggered.</p>
-</div>
-<ol>
-<li>Scroll down to the graphs under <strong>Insights</strong> (Your graphs maybe different).  Move your mouse over <strong>New findings over time by provider</strong> and observe the 3 sources of findings that Security Hub is already collecting.  (There will be more throughout this workshop)</li>
-</ol>
+</li>
+<li>
+<p>Observe the Passed and Failed status of the <strong>CIS AWS Foundations</strong>.  Even though you just enabled it a few minutes ago, partial results of the 43 total checks have been collected.</p>
+</li>
+<li>
+<p>Scroll down to the graphs under <strong>Insights</strong> (Your graphs maybe different).  Move your mouse over <strong>New findings over time by provider</strong> and observe the 3 sources of findings that Security Hub is already collecting.  (There will be more throughout this workshop)</p>
 <p><img alt="Security Hub Insights" src="../images/01-sec-hub-insights-findings-by-provider.png" /></p>
-<ol>
-<li>Scroll down further under <strong>Insights</strong>.  Move your mouse over <strong>Accounts with the most findings (by resource type)</strong> and observe the sorted list of AWS resources that have findings to investigated.</li>
-</ol>
+</li>
+<li>
+<p>Scroll down further under <strong>Insights</strong>.  Move your mouse over <strong>Accounts with the most findings (by resource type)</strong> and observe the sorted list of AWS resources that have findings to investigated.</p>
 <p><img alt="Security Hub Insights" src="../images/01-sec-hub-insights-findings-by-resource.png" /></p>
+</li>
+</ol>
 <h2 id="multi-account-hierarchy">Multi Account Hierarchy</h2>
 <p>You can invite other AWS accounts to enable AWS Security Hub and become associated with your AWS account. If the owner of the account that you invite enables Security Hub and then accepts the invitation, your account is designated as the master Security Hub account, and the invited accounts become associated as member accounts. When the invited account accepts the invitation, permission is granted to the master account to view the findings in the member account. The master account can also perform actions on findings in a member account.</p>
 <p>Security Hub supports up to 1000 member accounts per master, account per Region. The master-member account association is created in only the one Region that the invitation was sent from. You must enable Security Hub in each Region that you want to use it in, and then invite each account to associate as a member account in each Region.  </p>
@@ -489,10 +486,10 @@
 <p class="admonition-title">(Optional)You can invite another AWS account you are the owner of to enable AWS Security Hub and become associated with your Workshop AWS account.  In the steps below, instead of false data use information for another you AWS account you own, you can accept the invitation, and you can enable Security Hub.</p>
 </div>
 <ol>
-<li>Click <strong>Settings</strong> on the left hand navigation.</li>
-</ol>
+<li>
+<p>Click <strong>Settings</strong> on the left hand navigation.</p>
 <p><img alt="Security Hub Multi" src="../images/01-multi-account-settings.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>+ Add accounts</strong> in the above the empty account table.</p>
 </li>
@@ -504,13 +501,11 @@
 </li>
 <li>
 <p>Click <strong>Add</strong></p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Be sure to hit the tab key to get the Add button to enable.  The email does not need to be the AWS account owner.  The Add workflow allows you to add multiple member account invitations at a time.</p>
 </div>
 <p><img alt="Security Hub Multi" src="../images/01-multi-account-add.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>Next</strong></p>
 </li>
@@ -519,80 +514,84 @@
 </li>
 <li>
 <p>Click <strong>Invite</strong>.</p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">At this point a user with the appropriate permissions in the destination AWS account could accept this invite from the master account</p>
 </div>
 <p><img alt="Security Hub Multi" src="../images/01-multi-account-invited.png" /></p>
+</li>
+</ol>
 <h2 id="integrations">Integrations</h2>
-<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For third-party products Security Hub gives you the ability to selectively enable the integrations and and provides a link to the configuration instructions related to the third-party product.   </p>
+<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For third-party products Security Hub gives you the ability to selectively enable the integrations and provides a link to the configuration instructions related to the third-party product.   </p>
 <p>Security Hub detects and consolidates only those security findings from the supported AWS and partner product integrations that are generated after Security Hub is enabled in your AWS accounts. It doesn't retroactively detect and consolidate security findings that were generated before you enabled Security Hub. </p>
 <ol>
-<li>Click on <strong>Integrations</strong> from the left-hand navigation pane. </li>
-</ol>
+<li>
+<p>Click on <strong>Integrations</strong> from the left-hand navigation pane. </p>
 <p><img alt="Security Hub Integrations" src="../images/01-integrations-all.png" /></p>
-<ol>
-<li>Scroll through the list of available integrations.  Return to the top and <strong>search</strong> for <strong>Cloud Custodian</strong>.   </li>
-</ol>
+</li>
+<li>
+<p>Scroll through the list of available integrations.  Return to the top and <strong>search</strong> for <strong>Cloud Custodian</strong>.   </p>
 <p><img alt="Integrations Search" src="../images/01-integrations-search-cc.png" /></p>
-<ol>
-<li>Click <strong>Accept Findings</strong>.  Review the permissions required for the integration. </li>
-</ol>
+</li>
+<li>
+<p>Click <strong>Accept Findings</strong>.  Review the permissions required for the integration. </p>
 <p><img alt="Integrations Enable" src="../images/01-integrations-enable.png" /></p>
-<ol>
-<li>Click <strong>Accept findings</strong>. </li>
-</ol>
+</li>
+<li>
+<p>Click <strong>Accept findings</strong>. </p>
 <div class="admonition info">
 <p class="admonition-title">This will put in place a service policy allowing the partner solution to send finding information into this account.   For the purposes of this workshop a Cloud Custodian instance is already set up to automatically send findings to the integration you just enabled.  To use other partner integrations in your account, you would still need to complete the <strong>Configure</strong> step in the partner solution so findings that are created by the partner solution are sent to Security Hub. </p>
 </div>
 <p><img alt="Integrations Configure" src="../images/01-integrations-configure-cc.png" /></p>
+</li>
+</ol>
 <h2 id="findings">Findings</h2>
 <p>Security Hub imports findings AWS security services, third-party product integrations that you enable, and custom integrations you build. Security Hub consumes these findings using a standard findings format called AWS Security Finding Format (ASFF), which eliminates the need for time-consuming data conversion efforts. Security Hub then correlates the findings across integrated products to prioritize the most important ones. For more information about the findings format, see <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html" target="_blank">AWS Security Finding Format</a>.  </p>
 <ol>
-<li>Click on <strong>Findings</strong> from the left-hand navigation pane. </li>
-</ol>
+<li>
+<p>Click on <strong>Findings</strong> from the left-hand navigation pane. </p>
 <p><img alt="Findings List" src="../images/01-findings-list.png" /></p>
-<ol>
-<li>Click in the Search bar and select <strong>Severity label</strong> and enter <strong>MEDIUM</strong> (it must be all capitalized). </li>
-</ol>
+</li>
+<li>
+<p>Click in the Search bar and select <strong>Severity label</strong> and enter <strong>MEDIUM</strong> (it must be all capitalized). </p>
 <p><img alt="Findings Search" src="../images/01-findings-search.png" /></p>
-<ol>
+</li>
 <li>
 <p>Click <strong>Apply</strong>.   </p>
 </li>
 <li>
 <p>Select a <strong>Title</strong> of any finding to see more information.</p>
+<p><img alt="Findings Info" src="../images/01-findings-detail.png" /></p>
+</li>
+<li>
+<p>Click the arrow next to <strong>Resources</strong> on bottom right.</p>
+<p><img alt="Findings Resources" src="../images/01-findings-resources.png" /></p>
+</li>
+<li>
+<p>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AWSEc2Instance). this will add it as a filter to the search. </p>
+<p><img alt="Findings Search" src="../images/01-findings-search-ec2.png" /></p>
 </li>
 </ol>
-<p><img alt="Findings Info" src="../images/01-findings-detail.png" /></p>
-<ol>
-<li>Click the arrow next to <strong>Resources</strong> on bottom right.</li>
-</ol>
-<p><img alt="Findings Resources" src="../images/01-findings-resources.png" /></p>
-<ol>
-<li>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AWSEc2Instance). this will add it as a filter to the search. </li>
-</ol>
-<p><img alt="Findings Search" src="../images/01-findings-search-ec2.png" /></p>
 <h2 id="insights">Insights</h2>
 <p>A Security Hub Insight is a collection of related findings defined by an aggregation statement and optional filters. An insight identifies a security area that requires attention and intervention. Security Hub offers several managed (default) insights that you can't modify or delete. You can also create custom insights to track security issues unique to your AWS environment and usage.  </p>
 <ol>
-<li>Click on <strong>Insights</strong> from the left-hand navigation pane. </li>
-</ol>
+<li>
+<p>Click on <strong>Insights</strong> from the left-hand navigation pane. </p>
 <p><img alt="Insights Summary" src="../images/01-insights-summary.png" /></p>
-<ol>
-<li>Filter for insight <strong>severity</strong>.</li>
-</ol>
+</li>
+<li>
+<p>Filter for insight <strong>severity</strong>.</p>
 <p><img alt="Insights Filter" src="../images/01-insights-filter.png" /></p>
-<ol>
-<li>Click on <strong>24. Severity by counts of findings</strong>.</li>
-</ol>
+</li>
+<li>
+<p>Click on <strong>24. Severity by counts of findings</strong>.</p>
 <p><img alt="Insights 18" src="../images/01-insights-24.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">The <strong>Group By: Resource Id</strong> in the filter is what makes this an Insight</p>
 </div>
-<ol>
-<li>Select a <strong>Severity Label</strong> (e.g. Critical) to see the underlying finding(s).</li>
+</li>
+<li>
+<p>Select a <strong>Severity Label</strong> (e.g. Critical) to see the underlying finding(s).</p>
+</li>
 </ol>
 <h2 id="security-standards">Security Standards</h2>
 <p>Security Hub currently supports multiple security standards:</p>
@@ -619,35 +618,35 @@
 <p class="admonition-title">The first round of compliance checks will be done within 2 hours of enabling security hub and then runs every 12 hours.</p>
 </div>
 <ol>
-<li>Click on <strong>Security standards</strong>.</li>
-</ol>
+<li>
+<p>Click on <strong>Security standards</strong>.</p>
 <p><img alt="Security Standards" src="../images/01-standards-home.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Note the Security score should have changed from when you first enabled the CIS standard.  If your score shows 0% or -, disable and then re-enable the security standards.</p>
 </div>
-<ol>
-<li>Click <strong>View Results</strong> for CIS AWS Foundations Benchmark v1.2.0.</li>
-</ol>
+</li>
+<li>
+<p>Click <strong>View Results</strong> for CIS AWS Foundations Benchmark v1.2.0.</p>
 <p><img alt="CIS Standard Results" src="../images/01-standards-cis-results.png" /></p>
-<ol>
-<li>Filter on <strong>4.1</strong>.</li>
-</ol>
+</li>
+<li>
+<p>Filter on <strong>4.1</strong>.</p>
 <p><img alt="CIS 4.1" src="../images/01-standards-cis-4-1.png" /></p>
-<ol>
-<li>Click <strong>4.1 Ensure no security groups allow ingress from 0.0.0.0/0</strong>. </li>
-</ol>
+</li>
+<li>
+<p>Click <strong>4.1 Ensure no security groups allow ingress from 0.0.0.0/0</strong>. </p>
 <p><img alt="CIS 4.1" src="../images/01-standards-cis-4-1-detail.png" /></p>
-<ol>
+</li>
 <li>
 <p>Scroll down and you will notice there are some <strong>FAILED</strong> and some <strong>PASSED</strong> </p>
 </li>
 <li>
 <p>Click the <strong>Remediation instructions link</strong>, to open guidance in a new tab.</p>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">AWS Security Hub Security Standards provide remediation instructions for each check.</p>
 </div>
+</li>
+</ol>
 <p>Now that you have explored Security Hub's capabilities, you can proceed to the next module.</p>
                 
               
