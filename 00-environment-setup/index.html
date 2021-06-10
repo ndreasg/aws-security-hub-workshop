@@ -226,11 +226,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#determine-if-you-have-enabled-security-hub-config-and-guardduty" class="md-nav__link">
-    Determine if you have enabled Security Hub, Config, and GuardDuty.
+  <a href="#determine-if-you-have-enabled-security-hub-config-guardduty-and-iam-access-analyzer" class="md-nav__link">
+    Determine if you have enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer.
   </a>
   
-    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, and GuardDuty.">
+    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -249,6 +249,13 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     
   </a>
   
@@ -369,11 +376,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#determine-if-you-have-enabled-security-hub-config-and-guardduty" class="md-nav__link">
-    Determine if you have enabled Security Hub, Config, and GuardDuty.
+  <a href="#determine-if-you-have-enabled-security-hub-config-guardduty-and-iam-access-analyzer" class="md-nav__link">
+    Determine if you have enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer.
   </a>
   
-    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, and GuardDuty.">
+    <nav class="md-nav" aria-label="Determine if you have enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -392,6 +399,13 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     
   </a>
   
@@ -430,19 +444,16 @@
 <p>This workshop's procedures use multiple Lambda functions, EC2 instances, and other AWS resources created via CloudFormation templates. In this module, you will ensure that the right security services are configured and then deploy the template to create the overall workshop resources.</p>
 <p><strong>Agenda</strong></p>
 <ol>
-<li>Determine if have already enabled Security Hub, Config, and GuardDuty - 5 min</li>
+<li>Determine if have already enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer - 5 min</li>
 <li>Deploy workshop CloudFormation stack  - 10 min</li>
 </ol>
-<h2 id="determine-if-you-have-enabled-security-hub-config-and-guardduty">Determine if you have enabled Security Hub, Config, and GuardDuty.</h2>
-<p>Config, Security Hub, and GuardDuty must be enabled in the account and region you are conducting this workshop in.  The CloudFormation template that sets up the workshop has the option to enable all of this for you.  If you choose for that to happen, and these services are already enabled, the template will fail.</p>
-<p>In order to correctly perform the next step, you must confirm the status of each of these services.  If you already know the status, such as a fresh account provided by AWS for this workshop, proceed to the next section.</p>
+<h2 id="determine-if-you-have-enabled-security-hub-config-guardduty-and-iam-access-analyzer">Determine if you have enabled Security Hub, Config, GuardDuty, and IAM Access Analyzer.</h2>
+<p>Config, Security Hub, GuardDuty, and IAM Access Analyzer must be enabled in the account and region you are conducting this workshop in.  The CloudFormation template that sets up the workshop has the option to enable all of this for you.  If you choose for that to happen, and these services are already enabled, the template will fail.</p>
+<p>In order to correctly perform the next step, you must confirm the status of each of these services.  If you already know the status, such as a fresh account provided by AWS for this workshop, proceed to the <a href="#deploy-workshop-cloudformation-stack">Deploy workshop CloudFormation stack</a> section.</p>
 <p><img alt="AWS Console" src="../images/01-aws-console.png" /></p>
 <ol>
 <li>
-<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
-</li>
-<li>
-<p>Type <strong>Config</strong> in the search bar, and select <strong>Config</strong> from the list.</p>
+<p>In the <strong>AWS Console</strong> unified search box enter <strong>Config</strong> and select <strong>Config</strong> from the <strong>Services</strong> section..</p>
 </li>
 <li>
 <p>If you see <strong>Get started</strong> in the center of the page, Config is <strong>not</strong> enabled.</p>
@@ -464,10 +475,7 @@
 <h3 id="_1"></h3>
 </li>
 <li>
-<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
-</li>
-<li>
-<p>Type <strong>GuardDuty</strong> in the search bar, and select <strong>GuardDuty</strong> from the list.</p>
+<p>In the <strong>AWS Console</strong> unified search box enter <strong>GuardDuty</strong> and select <strong>GuardDuty</strong> from the <strong>Services</strong> section.</p>
 </li>
 <li>
 <p>If you see <strong>Get started</strong> in the center of the page, GuardDuty is <strong>not</strong> enabled.</p>
@@ -483,10 +491,7 @@
 <h3 id="_2"></h3>
 </li>
 <li>
-<p>From the <strong>AWS Console</strong> click <strong>Services</strong> in the top left corner</p>
-</li>
-<li>
-<p>Type <strong>Security Hub</strong> in the services search bar, and select <strong>Security Hub</strong> from the list.</p>
+<p>In the <strong>AWS Console</strong> unified search box enter <strong>Security Hub</strong> and select <strong>Security Hub</strong> from the <strong>Services</strong> section.</p>
 </li>
 <li>
 <p>If you see  <strong>Go to Security Hub</strong> on the right side of the page, Security Hub is <strong>not</strong> enabled.</p>
@@ -500,6 +505,25 @@
 </ol>
 </details>
 <h3 id="_3"></h3>
+</li>
+<li>
+<p>In the <strong>AWS Console</strong> unified search box enter <strong>IAM</strong> and select <strong>IAM</strong> from the <strong>Services</strong> section.</p>
+</li>
+<li>
+<p>In the lefthand navigation panel choose <strong>Access Analyzer</strong>.</p>
+</li>
+<li>
+<p>If you see a page outlining how IAM Access Analzyer works, IAM Access Analyzer is <strong>not</strong> enabled. </p>
+<details class="info"><summary>Optional Step: Click here for instructions on how to manually enable and set up IAM Access Analyer.</summary><ol>
+<li>
+<p>From the <a href="https://console.aws.amazon.com/access-analyzer/home" target="_blank">IAM Access Analzer page</a>, click <strong>Create analyzer</strong></p>
+</li>
+<li>
+<p>In the "Create analyzer" screen leave the Name as it is.  For the "Zone of trust" choose <strong>Current account</strong>.  Click <strong>Create analyzer</strong> .</p>
+</li>
+</ol>
+<h3 id="_4"></h3>
+</details>
 </li>
 </ol>
 <h2 id="deploy-workshop-cloudformation-stack">Deploy workshop CloudFormation stack</h2>
@@ -536,29 +560,49 @@
 <tr>
 <th>Parameter</th>
 <th>Value</th>
+<th>Parameter Details</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Stack name</td>
-<td>SecurityHubWkshp</td>
+<td><strong>SecurityHubWkshp</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>EnableGuardDuty</td>
-<td><strong>Yes-Enable GuardDuty</strong> or <strong>No-GuardDuty is already enabled</strong></td>
+<td><strong>Yes-Enable GuardDuty</strong> or <br> <strong>No-GuardDuty is already enabled</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>EnableSecurityHub</td>
-<td><strong>Yes-Enable Security Hub</strong> or <strong>No-Security Hub is already enabled</strong></td>
+<td><strong>Yes-Enable Security Hub</strong> or <br> <strong>No-Security Hub is already enabled</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>EnableConfig</td>
-<td><strong>Yes-Enable Config</strong> or <strong>No-Config is already enabled</strong></td>
+<td><strong>Yes-Enable Config</strong> or <br> <strong>No-Config is already enabled</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>EnableIAMAA</td>
+<td><strong>Yes-Enable IAM AA</strong> or <br> <strong>No-IAM AA is already enabled</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>CreatePublicResourcePolicies</td>
+<td><strong>Yes-Create public policies</strong> or <br> <strong>No-Dont create public policies</strong></td>
+<td>Creates an SQS queue with a policy allowing public access for posting messages to the queue.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Leave all other parameters with their default values</strong></p>
 </li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">If set to Yes, the CreatePubicResourcePolicies parameter will result in the template creating AWS resources that have resource policies that grant public access to the resource.  Creation of these resources enables IAM Access Analyzer to detect and report findings for these resources.  Deployment of these resources is optional as some environments, outside of AWS event environments, may detect and report on this resource as a company policy violation.  See the parameter details for information on which public resources the parameter will create.</p>
+</div>
+<ol>
 <li>
 <p>Once you have entered your parameters click <strong>Next</strong>.</p>
 </li>
