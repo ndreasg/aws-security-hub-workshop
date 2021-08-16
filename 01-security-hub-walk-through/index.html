@@ -9,13 +9,14 @@
         <meta name="description" content="AWS Security Hub allows you to centrally view and manage security alerts and automate security checks across AWS accounts. This workshop provides hands on experience with the full functionality that Security Hub provides. Your workshop starts with a guided tour of the Security Hub UI and its features. Next, you will integrate security findings from AWS services, learn how to integrate 3rd party security findings for your AWS environment, and build out your own custom security finding integration. Finally, you will respond to the security findings in your environment by taking action via manual and automated response techniques.">
       
       
+      
         <link rel="canonical" href="https://security-hub-workshop.awssecworkshops.com/01-security-hub-walk-through/">
       
       
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="../assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
@@ -23,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -68,7 +69,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-header-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -101,7 +104,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -152,7 +155,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -245,13 +250,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-account-hierarchy" class="md-nav__link">
-    Multi Account Hierarchy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#integrations" class="md-nav__link">
     Integrations
   </a>
@@ -275,6 +273,13 @@
         <li class="md-nav__item">
   <a href="#security-standards" class="md-nav__link">
     Security Standards
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-summary" class="md-nav__link">
+    Usage Summary
   </a>
   
 </li>
@@ -377,13 +382,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-account-hierarchy" class="md-nav__link">
-    Multi Account Hierarchy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#integrations" class="md-nav__link">
     Integrations
   </a>
@@ -411,6 +409,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#usage-summary" class="md-nav__link">
+    Usage Summary
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -433,10 +438,11 @@
 <p><strong>Agenda</strong> 20 minutes</p>
 <ol>
 <li>Summary Page</li>
-<li>Multi-Account Hierarchy</li>
 <li>Integrations</li>
 <li>Insights</li>
+<li>Findings</li>
 <li>Explore Security Standards</li>
+<li>Understand Usage Summary</li>
 </ol>
 <h2 id="security-hub-summary-page">Security Hub Summary Page</h2>
 <p>The Security Hub Summary page gives you an overview of security and compliance status of your AWS account(s). </p>
@@ -457,15 +463,12 @@
 <li>
 <p>Click <strong>Summary</strong> on the left hand navigation.</p>
 <p><img alt="Security Hub Summary" src="../images/01-sec-hub-summary.png" /></p>
-<div class="admonition info">
-<p class="admonition-title">Security Hub automatically enables subscriptions to GuardDuty and Inspector.  Also collected, but not used in this workshop are findings from Macie, IAM Access Analyzer, and Firewall Manager.</p>
-</div>
 </li>
 <li>
-<p>Observe the Passed and Failed status of the <strong>CIS AWS Foundations</strong>.  Even though you just enabled it a few minutes ago, partial results of the 43 total checks have been collected.</p>
+<p>Observe the Passed and Failed status of the <strong>CIS AWS Foundations</strong>.  Even though you just enabled it a few minutes ago, partial results for this security standard have already been collected.</p>
 </li>
 <li>
-<p>Scroll down to the graphs under <strong>Insights</strong> (Your graphs maybe different).  Move your mouse over <strong>New findings over time by provider</strong> and observe the 3 sources of findings that Security Hub is already collecting.  (There will be more throughout this workshop)</p>
+<p>Scroll down to the graphs under <strong>Insights</strong> (Your graphs may be different).  Move your mouse over <strong>New findings over time by provider</strong> and observe the multiple sources of findings that Security Hub is already collecting.  (There will be more throughout this workshop)</p>
 <p><img alt="Security Hub Insights" src="../images/01-sec-hub-insights-findings-by-provider.png" /></p>
 </li>
 <li>
@@ -473,48 +476,8 @@
 <p><img alt="Security Hub Insights" src="../images/01-sec-hub-insights-findings-by-resource.png" /></p>
 </li>
 </ol>
-<h2 id="multi-account-hierarchy">Multi Account Hierarchy</h2>
-<p>An AWS Security Hub administrator account can view data from and manage configuration for its member accounts. The Security Hub administrator-member relationship is established differently based on whether the accounts belong to an organization in AWS Organizations. </p>
-<p>If you are integrated with Organizations, the organization management account designates the Security Hub administrator account, which becomes the administrator account.  The Security Hub administrator account automatically has access to all of the accounts in the organization. The Security Hub administrator account determines which accounts in the organization to enable as member accounts. These member accounts cannot disassociate themselves from the Security Hub administrator account.</p>
-<p>If you are not integrated with Organizations, member accounts accept an invitation from a administrator account. A Security Hub administrator account for an organization can also invite member accounts that are not part of the organization.  Accounts that are added by invitation can disassociate themselves from their administrator account. </p>
-<p>In this section we will add a member account to your Workshop Security Hub Account.  These instructions use sample information and will not actually setup the Multi-Account Hierarchy. </p>
-<div class="admonition info">
-<p class="admonition-title">(Optional)You can invite another AWS account you are the owner of to enable AWS Security Hub and become associated with your Workshop AWS account.  In the steps below, instead of false data use information for another you AWS account you own, you can accept the invitation, and you can enable Security Hub.</p>
-</div>
-<ol>
-<li>
-<p>Click <strong>Settings</strong> on the left hand navigation.</p>
-<p><img alt="Security Hub Multi" src="../images/01-multi-account-settings.png" /></p>
-</li>
-<li>
-<p>Click <strong>+ Add accounts</strong> above the empty account table.</p>
-</li>
-<li>
-<p>Enter <strong>111122223333</strong> (Four 1's, 2's, &amp; 3's) in the <strong>Account ID</strong> field.</p>
-</li>
-<li>
-<p>Enter a valid formatted <strong>email address</strong>. (for this example it doesn't have to be a real email.)</p>
-</li>
-<li>
-<p>Click <strong>Add</strong></p>
-<p><img alt="Security Hub Multi" src="../images/01-multi-account-add.png" /></p>
-</li>
-<li>
-<p>Click <strong>Next</strong></p>
-</li>
-<li>
-<p>Click <strong>Invite</strong> in the Status field of the member accounts table.</p>
-</li>
-<li>
-<p>Click <strong>Invite</strong>.</p>
-<div class="admonition info">
-<p class="admonition-title">At this point a user with the appropriate permissions in the destination AWS account could accept this invite from the master account</p>
-</div>
-<p><img alt="Security Hub Multi" src="../images/01-multi-account-invited.png" /></p>
-</li>
-</ol>
 <h2 id="integrations">Integrations</h2>
-<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For third-party products Security Hub gives you the ability to selectively enable the integrations and provides a link to the configuration instructions related to the third-party product.   </p>
+<p>In this section, we will walk through the Security Hub side of enabling a partner integration. Security Hub provides the ability to integrate security findings from AWS services and third-party products.  For AWS services Security Hub automatically enables the integration, and you can optionally disable each integration.  For third-party products Security Hub gives you the ability to selectively enable the integrations and provides a link to the configuration instructions related to the third-party product.   </p>
 <p>Security Hub detects and consolidates only those security findings from the supported AWS and partner product integrations that are generated after Security Hub is enabled in your AWS accounts. It doesn't retroactively detect and consolidate security findings that were generated before you enabled Security Hub. </p>
 <ol>
 <li>
@@ -522,7 +485,7 @@
 <p><img alt="Security Hub Integrations" src="../images/01-integrations-all.png" /></p>
 </li>
 <li>
-<p>Scroll through the list of available integrations.  Return to the top and <strong>search</strong> for <strong>Cloud Custodian</strong>.   </p>
+<p>Scroll through the list of available integrations.  Note that integrations for AWS services are automatically enabled.  Return to the top and <strong>search</strong> for <strong>Cloud Custodian</strong>.   </p>
 <p><img alt="Integrations Search" src="../images/01-integrations-search-cc.png" /></p>
 </li>
 <li>
@@ -532,7 +495,7 @@
 <li>
 <p>Click <strong>Accept findings</strong>. </p>
 <div class="admonition info">
-<p class="admonition-title">This will put in place a service policy allowing the partner solution to send finding information into this account.   For the purposes of this workshop a Cloud Custodian instance is already set up to automatically send findings to the integration you just enabled.  To use other partner integrations in your account, you would still need to complete the <strong>Configure</strong> step in the partner solution so findings that are created by the partner solution are sent to Security Hub. </p>
+<p class="admonition-title">This will put in place a service policy allowing the partner solution to send finding information into this account.   For the purposes of this workshop a Cloud Custodian instance is already set up to automatically send findings to the integration you just enabled.  To use other partner integrations in your account, you would still need to complete the Configure step in the partner solution so findings that are created by the partner solution are sent to Security Hub. </p>
 </div>
 <p><img alt="Integrations Configure" src="../images/01-integrations-configure-cc.png" /></p>
 </li>
@@ -545,23 +508,26 @@
 <p><img alt="Findings List" src="../images/01-findings-list.png" /></p>
 </li>
 <li>
-<p>Click in the Search bar and select <strong>Severity label</strong> and enter <strong>MEDIUM</strong> (it must be all capitalized). </p>
+<p>In its default view the Findings tab can have a lot of information for you to consume.  To narrow the overall list of findings down enter some search criteria.  Click in the Search bar and select a filter field of <strong>Severity label</strong>, a filter match type of <strong>is</strong> and a search value <strong>MEDIUM</strong> (Search value must be all capitalized). </p>
 <p><img alt="Findings Search" src="../images/01-findings-search.png" /></p>
 </li>
 <li>
 <p>Click <strong>Apply</strong>.   </p>
 </li>
 <li>
-<p>Select a <strong>Title</strong> of any finding to see more information.</p>
+<p>Select a <strong>Title</strong> of any finding to see more information in the finding details pane.</p>
 <p><img alt="Findings Info" src="../images/01-findings-detail.png" /></p>
 </li>
 <li>
-<p>Click the arrow next to <strong>Resources</strong> on bottom right.</p>
+<p>In the finding details pane click the arrow next to <strong>Resources</strong> on bottom right.</p>
 <p><img alt="Findings Resources" src="../images/01-findings-resources.png" /></p>
 </li>
 <li>
-<p>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AWSEc2Instance). this will add it as a filter to the search. </p>
+<p>Click the [+] to the right of this findings <strong>Resource Type</strong> (e.g. AWSEc2Instance). This will add the resource as a filter to the search. </p>
 <p><img alt="Findings Search" src="../images/01-findings-search-ec2.png" /></p>
+</li>
+<li>
+<p>In the finding details pane choose the finding ID at the top of the pane to display the complete JSON for the finding.  The finding JSON can be downloaded to a file if ever needed for further investingation.</p>
 </li>
 </ol>
 <h2 id="insights">Insights</h2>
@@ -589,26 +555,29 @@
 <h2 id="security-standards">Security Standards</h2>
 <p>Security Hub currently supports multiple security standards:</p>
 <ul>
-<li>Payment Card Industry Data Security Standard (PCI DSS) v3.2.1:<blockquote>
-<p>The Payment Card Industry Data Security Standard (PCI DSS) standard in Security Hub consists of a set of AWS security best practices controls. Each control applies to a specific AWS resource, and relates to one or more PCI DSS version 3.2.1 requirements. A PCI DSS requirement can be related to multiple controls. The details page for each PCI DSS control lists the specific PCI DSS requirements that are related to that control.The PCI DSS Compliance Standard in Security Hub is designed to help you with your ongoing PCI DSS security activities. The controls cannot verify whether your systems are compliant with the PCI DSS standard. They can neither replace internal efforts nor guarantee that you will pass a PCI DSS assessment.</p>
-</blockquote>
-</li>
-<li>
-<p>AWS Foundational Security Best Practices v1.0.0:</p>
-<blockquote>
-<p>The AWS Foundational Security Best Practices standard is a set of controls that detect when your deployed accounts and resources deviate from security best practices. The controls include best practices from across multiple AWS services. Each control belongs to one of the following categories, which are based on the functions described in the NIST Cybersecurity Framework. </p>
-</blockquote>
-</li>
 <li>
 <p>Center for Internet Security (CIS) AWS Foundations v1.2.0:</p>
 <blockquote>
 <p>AWS Security Hub has satisfied the requirements of CIS Security Software Certification and is hereby awarded CIS Security Software Certification for the following CIS Benchmarks: CIS Benchmark for CIS Amazon Web Services Foundations Benchmark, v1.2.0, Level 1 and Level 2</p>
 </blockquote>
 </li>
+<li>
+<p>AWS Foundational Security Best Practices v1.0.0:</p>
+<blockquote>
+<p>The AWS Foundational Security Best Practices standard is a set of controls that detect when your deployed accounts and resources deviate from security best practices. The controls include best practices from across multiple AWS services. Each control belongs to one of the following categories, which are based on the functions described in the NIST Cybersecurity Framework.</p>
+</blockquote>
+</li>
+<li>
+<p>Payment Card Industry Data Security Standard (PCI DSS) v3.2.1:</p>
+<blockquote>
+<p>The Payment Card Industry Data Security Standard (PCI DSS) standard in Security Hub consists of a set of AWS security best practices controls. Each control applies to a specific AWS resource, and relates to one or more PCI DSS version 3.2.1 requirements. A PCI DSS requirement can be related to multiple controls. The details page for each PCI DSS control lists the specific PCI DSS requirements that are related to that control.The PCI DSS Compliance Standard in Security Hub is designed to help you with your ongoing PCI DSS security activities. The controls cannot verify whether your systems are compliant with the PCI DSS standard. They can neither replace internal efforts nor guarantee that you will pass a PCI DSS assessment.</p>
+</blockquote>
+</li>
 </ul>
-<p>To run the CIS AWS Foundations standard's compliance checks on your environment's resources, Security Hub either runs through the exact audit steps prescribed for the checks in <a href="https://www.cisecurity.org/benchmark/amazon_web_services/" target="_blank"> Securing Amazon Web Services</a> or uses specific AWS Config managed rules. Therefore, for the CIS AWS Foundations standard to be functional in Security Hub, when you enable it in a particular account, you must also enable AWS Config in that account. Security Hub doesn't manage AWS Config for you. For this workshop Config has already been enabled for you.</p>
+<p>More information about each of these security standards can be found at: <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/standards-available.html" target="_blank"> Available security standards in AWS Security Hub</a></p>
+<p>To run the CIS AWS Foundations standard's compliance checks on your environment's resources, Security Hub either runs through the exact audit steps prescribed for the checks in <a href="https://www.cisecurity.org/benchmark/amazon_web_services/" target="_blank"> Securing Amazon Web Services</a> or uses specific AWS Config managed rules. To use the AWS Config managed rules AWS Config must be enabled in the account where you are using Security Hub. For this workshop Config has already been enabled for you. </p>
 <div class="admonition info">
-<p class="admonition-title">The first round of compliance checks will be done within 2 hours of enabling security hub and then runs every 12 hours.</p>
+<p class="admonition-title">The first round of compliance checks will be done within 2 hours of enabling Security Hub and then runs every 12 hours.</p>
 </div>
 <ol>
 <li>
@@ -627,17 +596,32 @@
 <p><img alt="CIS 4.1" src="../images/01-standards-cis-4-1.png" /></p>
 </li>
 <li>
-<p>Click <strong>4.1 Ensure no security groups allow ingress from 0.0.0.0/0</strong>. </p>
+<p>Click on the Title: <strong>Ensure no security groups allow ingress from 0.0.0.0/0</strong>.  This presents a view of all resources evaluated for this particular control and the current status of each resource as it relates to the control.  </p>
 <p><img alt="CIS 4.1" src="../images/01-standards-cis-4-1-detail.png" /></p>
 </li>
 <li>
-<p>Scroll down and you will notice there are some <strong>FAILED</strong> and some <strong>PASSED</strong> </p>
-</li>
-<li>
-<p>Click the <strong>Remediation instructions link</strong>, to open guidance in a new tab.</p>
+<p>At the top of the page click the <strong>Remediation instructions link</strong>, to open guidance in a new tab.</p>
 <div class="admonition info">
 <p class="admonition-title">AWS Security Hub Security Standards provide remediation instructions for each check.</p>
 </div>
+</li>
+<li>
+<p>Scroll down and you will notice there are some resources with a <strong>FAILED</strong> and status some with a <strong>PASSED</strong> status.  For one of the <strong>FAILED</strong> resources click on the three dots in the <strong>Investigate</strong> column.  This will display links that will take you to AWS Config to view the configuration timeline for this resource or the overall config rule that performed the evaluation on this resource.  Feel free to click the links to explore more about the resource and the config rule.   </p>
+<p><img alt="Control Investigate" src="../images/01-sec-hub-control-investigate.png" /></p>
+</li>
+</ol>
+<h2 id="usage-summary">Usage Summary</h2>
+<p>Security Hub provides usage info for your AWS account, helping you to understand what your monthly billing estimate will be and which components of Security Hub are contributing to your bill.  Security Hub offers a 30 day free trial for each account.  During the free trial Security Hub provides an estimate of what the spend would be so you can assess your spend beyond the free trial.  </p>
+<ol>
+<li>
+<p>Click <strong>Settings</strong> on the left hand navigation.</p>
+</li>
+<li>
+<p>Click the <strong>Usage</strong> tab in the <strong>Settings</strong> screen.</p>
+</li>
+<li>
+<p>On the left hand side of the screen your usage for the billing period is displayed.  Usage is broken down by findings ingested and by security checks that have been run.  At the bottom of the usage summary is the total estimated cost for the billing period.  On the right hand side is the current Security Hub pricing so that you can see how the usage in your account contributed to the estimated cost.  </p>
+<p><img alt="Usage Details" src="../images/01-usage-details.png" /></p>
 </li>
 </ol>
 <p>Now that you have explored Security Hub's capabilities, you can proceed to the next module.</p>
@@ -751,8 +735,8 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

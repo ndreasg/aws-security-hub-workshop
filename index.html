@@ -9,13 +9,14 @@
         <meta name="description" content="AWS Security Hub allows you to centrally view and manage security alerts and automate security checks across AWS accounts. This workshop provides hands on experience with the full functionality that Security Hub provides. Your workshop starts with a guided tour of the Security Hub UI and its features. Next, you will integrate security findings from AWS services, learn how to integrate 3rd party security findings for your AWS environment, and build out your own custom security finding integration. Finally, you will respond to the security findings in your environment by taking action via manual and automated response techniques.">
       
       
+      
         <link rel="canonical" href="https://security-hub-workshop.awssecworkshops.com/">
       
       
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
@@ -23,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.19753c6b.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -68,7 +69,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-header-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -101,7 +104,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -152,7 +155,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -456,27 +461,28 @@
 <h2 id="architecture">Architecture</h2>
 <p>For this workshop there will be multiple pieces of infrastructure and AWS services deployed in order to facilitate creation of security findings in Security Hub.  </p>
 <p>Multiple EC2 instances will be launched to facilitate the generation of findings from GuardDuty &amp; Inspector.  Additionally these instances will be used to help with demonstration of integration of custom findings into Security Hub.</p>
-<p>Multiple AWS services will be configured in the workshop to help facilitate the generation of Security Hub findings.  These services include:
-* Security Hub
-* GuardDuty 
-* Secrets Manager
-* Inspector
-* Config</p>
+<p>Multiple AWS services will be configured in the workshop to help facilitate the generation of Security Hub findings.  These services include:</p>
+<ul>
+<li><a href="https://aws.amazon.com/security-hub/" target="_blank"> AWS Security Hub </a></li>
+<li><a href="https://aws.amazon.com/guardduty/" target="_blank"> Amazon GuardDuty </a></li>
+<li><a href="https://aws.amazon.com/secrets-manager/" target="_blank"> Amazon Secrets Manager</a></li>
+<li><a href="https://aws.amazon.com/inspector/" target="_blank"> Amazon Inspector</a></li>
+<li><a href="https://aws.amazon.com/config/" target="_blank"> AWS Config</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html" target="_blank"> AWS IAM Access Analyzer</a></li>
+</ul>
 <h2 id="presentation-deck">Presentation deck</h2>
 <p><a href="security-hub-workshop-presentation.pdf">Security Hub Workshop Presentation</a></p>
 <h2 id="region">Region</h2>
 <p>Please use <strong>us-west-2 (Oregon)</strong> or <strong>us-east-1 (Virgina)</strong> for this workshop.</p>
 <h2 id="modules">Modules</h2>
 <p>This workshop is broken up into setup and then four modules: </p>
-<ol>
-<li><a href="00-environment-setup/">Initial Environment Setup </a></li>
-<li><a href="01-security-hub-walk-through/">Security Hub Walk Through </a></li>
-<li><a href="02-custom-insights-findings/">Custom Insights and Custom Findings</a> </li>
-<li><a href="03-remediation-and-response/">Remediation and Response Custom Action</a> </li>
-<li><a href="04-enrichment-and-integration/">Enrichment and Integration</a></li>
-</ol>
+<p>Module 0 - <a href="00-environment-setup/">Environment build </a><br />
+Module 1 -  <a href="01-security-hub-walk-through/">Security Hub Walkthrough </a><br />
+Module 2 -  <a href="02-custom-insights-findings/">Custom Insights &amp; Findings</a>   <br />
+Module 3 - <a href="03-remediation-and-response/">Remediation &amp; Response</a> <br />
+Module 4 - <a href="04-enrichment-and-integration/">Enrichment &amp; Integration</a>  </p>
 <h2 id="contributing">Contributing</h2>
-<p>Your contributions are always welcome! Please have a look at the <a href="contribute/">contribution guidelines</a> first. :tada:</p>
+<p>Your contributions are always welcome! Please have a look at the <a href="contribute/">contribution guidelines</a> first.</p>
 <p><a href="#Overview">(Back to top)</a></p>
 <h2 id="license-summary">License Summary</h2>
 <p>The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the <a href="LICENSE">LICENSE</a> file.</p>
@@ -578,8 +584,8 @@
       
     </div>
     
-      <script src="assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

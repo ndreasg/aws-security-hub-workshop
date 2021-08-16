@@ -9,13 +9,14 @@
         <meta name="description" content="AWS Security Hub allows you to centrally view and manage security alerts and automate security checks across AWS accounts. This workshop provides hands on experience with the full functionality that Security Hub provides. Your workshop starts with a guided tour of the Security Hub UI and its features. Next, you will integrate security findings from AWS services, learn how to integrate 3rd party security findings for your AWS environment, and build out your own custom security finding integration. Finally, you will respond to the security findings in your environment by taking action via manual and automated response techniques.">
       
       
+      
         <link rel="canonical" href="https://security-hub-workshop.awssecworkshops.com/03-remediation-and-response/">
       
       
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="../assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
@@ -23,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -68,7 +69,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-header-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -101,7 +104,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -152,7 +155,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -460,7 +465,7 @@
 <li>Deploy remediation playbooks for CIS Benchmarks - 15 min</li>
 </ol>
 <h2 id="create-a-security-hub-custom-action-to-isolate-an-ec2-instance">Create a Security Hub Custom Action to Isolate an EC2 Instance</h2>
-<p>This guide will show you how to create a custom action in Security Hub and then tie that to an EventBridge rule which calls a Lambda function to change the security group on an EC2 instance that is part of a Security Hub finding. </p>
+<p>This section will walk you through how to create a custom action in Security Hub which will trigger an EventBridge rule. In this scenario, the EventBridge rule will invoke a Lambda function to change the security group on an EC2 instance that is associated with a Security Hub finding.</p>
 <h3 id="create-a-custom-action-in-security-hub">Create a Custom Action in Security Hub</h3>
 <ol>
 <li>
@@ -491,8 +496,7 @@
 </li>
 </ol>
 <h3 id="create-amazon-eventbridge-rule-to-capture-the-custom-action">Create Amazon EventBridge Rule to capture the Custom Action</h3>
-<p>Events from AWS services are delivered to CloudWatch Events and Amazon EventBridge in near real time. You can write simple rules to indicate which events you're interested in and what automated actions to take when an event matches a rule. The actions that can be automatically triggered include: an AWS Lambda function, Amazon EC2 Run Command, Relaying the event to Amazon Kinesis Data Streams, an AWS Step Functions state machine, an Amazon SNS topic, a ECS task, and others.</p>
-<p>In this section, you will define an EventBridge rule that will match events (Findings) coming from Security Hub which were forwarded by the custom action you defined above. </p>
+<p>In this section, you will define an EventBridge rule that will match events (findings) coming from Security Hub which were forwarded by the custom action you defined above. </p>
 <ol>
 <li>
 <p>Navigate to the <strong>Amazon EventBridge</strong> Console.</p>
@@ -515,37 +519,20 @@
 <p>Select <strong>Pre-defined pattern by service</strong>.</p>
 </li>
 <li>
-<p>In the drop down for <strong>Service Provider</strong>, select <strong>AWS</strong>.</p>
+<p>In the drop down for <strong>Service Provider</strong>, select <strong>AWS</strong> for the service provider.</p>
 </li>
 <li>
 <p>In the drop down for <strong>Service Name</strong>, select or type and select <strong>Security Hub</strong>. </p>
 </li>
 <li>
 <p>In the drop down for <strong>Event type</strong> choose <strong>Security Hub Finding – Custom Action</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>Specific custom action ARN(s)</strong> radio button.  Enter the ARN for the custom action that you created earlier. </p>
 <p><img alt="Custom Action" src="../images/03-custom-create-event-source.png" /></p>
-</li>
-<li>
-<p>In the <strong>Event Pattern</strong> window click the <strong>Edit</strong> button. </p>
-</li>
-<li>
-<p>Add in the resources line as shown below, making sure to paste in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
 <div class="admonition info">
-<p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
+<p class="admonition-title">Note that Event Bridge automatically updates the event pattern to include your custom action ARN as a resource.</p>
 </div>
-<p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<p><pre>
-<code>{ 
-"source": [ 
-    "aws.securityhub" 
-    ], 
-    "detail-type": [ 
-        "Security Hub Findings - Custom Action" 
-    ], 
-    "resources": [ 
-        "arn:aws:securityhub:[YOUR-REGION]:[YOUR-ACCOUNT-ID]:action/custom/IsolateInstance" 
-    ] 
-}</code></p>
-<p><img alt="Custom Action" src="../images/03-custom-create-event-source-updated.png" /></p>
 </li>
 <li>
 <p>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>isolate-ec2-security-group</strong> Lambda function. </p>
@@ -555,7 +542,7 @@
 </div>
 </li>
 <li>
-<p>Click <strong>Create</strong>.</p>
+<p>Click <strong>Create</strong> to complete creation of the Event Bridge rule.</p>
 </li>
 </ol>
 <h3 id="isolate-the-security-group-on-an-ec2-instance">Isolate the security group on an EC2 Instance</h3>
@@ -587,7 +574,7 @@
 <p><img alt="Custom Action" src="../images/03-security-group.png" /></p>
 </li>
 <li>
-<p>Go back to your <strong>Security Hub tab</strong> in your browser and click in the check box in the far left of this same finding.</p>
+<p>Go back to the Security Hub tab in your browser and click in the check box in the far left of this same finding.</p>
 </li>
 <li>
 <p>In the <strong>Actions</strong> drop down choose the name of your custom action to Isolate EC2 Instances. </p>
@@ -626,7 +613,7 @@
 </tbody>
 </table>
 <div class="admonition info">
-<p class="admonition-title">If you are running this workshop in an AWS provided environment and it is not in one of the above regions you can still deploy the remediation template, via CloudFormation, in the region you are performing the workshop in.  For Step 1, click either of the Deploy to AWS buttons and when that takes you to the CloudFormation console you can change your region in the top right corner of the AWS console to your desired region.  Once you have created the stack with this template you can pick up this section at step 2 below.</p>
+<p class="admonition-title">If you are running this workshop in an AWS provided environment and it is not in one of the above regions you can still deploy the remediation template, via CloudFormation, in the region you are performing the workshop in.  For Step 1, click either of the Deploy to AWS buttons above and when that takes you to the CloudFormation console you can change your region in the top right corner of the AWS console to your desired region.  While you will be associated with a new region the URL for the CloudFormation template will remain populated.  Once you have set your region you can proceed to step 2 to continue deployment.</p>
 </div>
 <ol>
 <li>
@@ -660,7 +647,7 @@
 </li>
 <li>
 <p>Under CIS AWS Foundations Benchmark v1.2.0 click <strong>View results</strong>.</p>
-<p><img alt="remediation" src="../images/03-remediation-security-standards.png" /></p>
+<p><img alt="remediation" src="../images/01-standards-home.png" /></p>
 </li>
 <li>
 <p>Type "<strong>2.8</strong>" in the Filter controls bar.</p>
@@ -672,16 +659,15 @@
 </div>
 </li>
 <li>
-<p>Click the title for "CIS 2.8 Ensure rotation for customer created CMKs is enabled"</p>
-<p><img alt="remediation" src="../images/03-remediation-cis28-check.png" /></p>
+<p>Click the title for <strong>CIS 2.8 Ensure rotation for customer created CMKs is enabled</strong>.</p>
 </li>
 <li>
-<p>Click the <strong>check box</strong> to select the finding.</p>
+<p>Click the <strong>check box</strong> to select the failed finding.</p>
 </li>
 <li>
 <p>Click the <strong>Actions</strong> drop down on the right side and select <strong>CIS 2.8 RR</strong>.</p>
 <div class="admonition info">
-<p class="admonition-title">This triggers the remediation Lambda function associated with resolving CIS 2.8.  Notice the list of available actions you have for CIS created from the template deployment.</p>
+<p class="admonition-title">Notice the list of available actions you have for CIS which were created from the template deployment.</p>
 </div>
 <p><img alt="remediation" src="../images/03-remediation-cis28-action.png" /></p>
 <div class="admonition info">
@@ -692,17 +678,17 @@
 </div>
 </li>
 <li>
-<p>Click the three vertical dots to expand associated links to Config.</p>
+<p>Click the three vertical dots in the <strong>Investigate</strong> column to expand associated links to Config.</p>
 </li>
 <li>
-<p>Click the link for <strong>Config Rule</strong>.</p>
+<p>Click the link for <strong>Config Rule</strong> which will open a new tab showing the details for the config rule related to the CIS check.</p>
 <p><img alt="remediation" src="../images/03-remediation-cis28-rule.png" /></p>
 </li>
 <li>
-<p>Click <strong>Re-evaluate</strong> at the top of the page.</p>
+<p>In the Config Rule screen click the <strong>Actions</strong> drop down and then choose <strong>Re-evaluate</strong>.  This will cause the config rule to re-run and publish updated details on compliant and noncompliant resources.</p>
 </li>
 <li>
-<p>Click the browser tab to return to the filtered findings for CIS 2.8 and refresh your browser. The findings should now have a status of PASSED.</p>
+<p>Click the Security Hub browser tab to return to the filtered findings for CIS 2.8 and refresh your browser. The findings should now have a status of PASSED.</p>
 <p><img alt="remediation" src="../images/03-remediation-cis28-passed.png" /></p>
 </li>
 </ol>
@@ -817,8 +803,8 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

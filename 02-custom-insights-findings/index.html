@@ -9,13 +9,14 @@
         <meta name="description" content="AWS Security Hub allows you to centrally view and manage security alerts and automate security checks across AWS accounts. This workshop provides hands on experience with the full functionality that Security Hub provides. Your workshop starts with a guided tour of the Security Hub UI and its features. Next, you will integrate security findings from AWS services, learn how to integrate 3rd party security findings for your AWS environment, and build out your own custom security finding integration. Finally, you will respond to the security findings in your environment by taking action via manual and automated response techniques.">
       
       
+      
         <link rel="canonical" href="https://security-hub-workshop.awssecworkshops.com/02-custom-insights-findings/">
       
       
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="../assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
@@ -23,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -68,7 +69,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-header-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -101,7 +104,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -152,7 +155,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -428,10 +433,12 @@
                 
                 <h1 id="module-2-custom-insights-and-custom-findings">Module 2: Custom Insights and Custom Findings</h1>
 <p>A key feature of Security Hub is the ability to create security findings that are above and beyond the native integrations that Security Hub has with AWS services or 3rd party providers.  This custom findings feature gives customers the flexibility to build their security checks against their AWS environment and import them into Security Hub.</p>
-<p>In the environment for this workshop, multiple sources that are sending custom findings into Security Hub:
-* The open-source Cloud Custodian project running on an EC2 instance.
-* A Config Rule checking for non-compliant AMIs.
-* A Lambda function looking for non-compliant secrets.</p>
+<p>In the environment for this workshop, multiple sources that are sending custom findings into Security Hub:</p>
+<ul>
+<li>The open-source Cloud Custodian project running on an EC2 instance.</li>
+<li>A Config Rule checking for non-compliant AMIs.</li>
+<li>A Lambda function looking for non-compliant secrets.</li>
+</ul>
 <p>This module will guide you on how to either view or fully integrate these findings sources into Security Hub.</p>
 <p><strong>Agenda</strong></p>
 <ol>
@@ -450,7 +457,7 @@
 <p>Navigate to the Amazon EventBridge Console.</p>
 </li>
 <li>
-<p>Click on the <strong>Create rule</strong> on the right side.</p>
+<p>Click on <strong>Create rule</strong> on the right side.</p>
 <p><img alt="Custom Action" src="../images/03-custom-eventbridge.png" /></p>
 </li>
 <li>
@@ -498,7 +505,6 @@
 </li>
 <li>
 <p>From the Config Dashboard click <strong>Rules</strong> on the left menu.</p>
-<p><img alt="Config" src="../images/02-config-dashboard.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Make sure to not choose Rules from the Aggregated view menu.  This requires Config Aggregator and this feature is not used in this workshop.</p>
 </div>
@@ -509,16 +515,19 @@
 <p><img alt="Config" src="../images/02-approved-ami-config-rule.png" /></p>
 </li>
 <li>
-<p>Click on the <strong>Delete results</strong> button.  In the confirmation popup click <strong>Delete</strong>.</p>
+<p>In the <strong>Actions</strong> drop down choose <strong>Delete results</strong>.  Enter <strong>Delete</strong> in the the confirmation box.</p>
 </li>
 <li>
-<p>Click on the refresh button in the <strong>Choose resources in scope</strong> section.  The noncompliant resource section should now be empty.  </p>
+<p>Click on the refresh button in the <strong>Resources in scope</strong> section.  The noncompliant resource section should now be empty.  </p>
 </li>
 <li>
-<p>Click the <strong>Re-evaluate</strong> button.  You will get a message that the Config rule is in use and that you need to refresh the page.  At this point you can either refresh the entire page in your browser or use the refresh button in the <strong>Choose resources in scope</strong> section of the page.</p>
+<p>In the <strong>Actions</strong> drop down choose <strong>Re-evaluate</strong>.  You will get a message that the Config rule is being reevaluated.  </p>
+</li>
+<li>
+<p>To track progress of the rule re-evaluation you can either refresh the entire page in your browser or use the refresh button in the <strong>Resources in scope</strong> section of the page.  It may take a couple minutes and refreshes before the noncompliant resource re-appears in the <strong>Resources in scope</strong> section.</p>
 </li>
 </ol>
-<p>An instance should now be showing as noncompliant in the <strong>Choose resources in scope</strong> section.  This re-run of the Config rule will trigger the EventBridge rule that is looking for noncompliant resources, resulting in the finding showing in Security Hub.  </p>
+<p>An instance should now be showing as noncompliant in the <strong>Resources in scope</strong> section.  This re-run of the Config rule will trigger the EventBridge rule that is looking for noncompliant resources, resulting in the finding showing in Security Hub.  </p>
 <div class="admonition info">
 <p class="admonition-title">Clearing results and re-evaluating the Config rule is being done to help force sending findings into Security Hub for this workshop.  Under normal circumstances you will not need manually run the Config rule in order to get findings to show in Security Hub.  Once you have the Config and EventBridge rules configured, new noncompliant resources will automatically flow into Security Hub as a Config rule finds noncompliant resources.</p>
 </div>
@@ -531,13 +540,16 @@
 <p>Click on the <strong>Findings</strong> option in the left-hand navigate menu. </p>
 </li>
 <li>
-<p>You should see a rule towards the top of the findings list with a <strong>Company</strong> of <strong>Personal</strong> and a <strong>Title</strong> about an unapproved AMI for an instance.  This is the result of your compliance rule and its integration with EventBridge.  Click on the <strong>Title</strong> link for the finding to view more details for your finding.</p>
-<p><img alt="Config" src="../images/02-unapproved-ami-finding.png" /></p>
+<p>You should see a finding towards the top of the findings list with a <strong>Company</strong> of <strong>Personal</strong> and a <strong>Title</strong> about an unapproved AMI for an instance.  This finding is the result of your compliance rule and its integration with EventBridge.  Click on the <strong>Title</strong> link for the finding to view more details for your finding.</p>
 </li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">If the finding is not showing towards the top you can filter for the finding.  Click in the fiter bar and choose a filter of "Title", choose a filter match type of "starts with" and enter "Unapproved AMI" as the filter value.</p>
+</div>
+<p><img alt="Config" src="../images/02-unapproved-ami-finding.png" /></p>
 <p>You now have a setup in place that helps demonstrate how you can send custom findings into Security Hub using AWS data sources and EventBridge rules.</p>
 <div class="admonition info">
-<p class="admonition-title">In your environment the Lambda function <strong>find-secrets-without-rotation</strong> checks for secrets that have a rotation time that is beyond the max days parameter on the function.  When secrets are found with a rotation time beyond what is defined in the function a finding is created in Security Hub.  Take some time to explore the Lambda function to see how you can directly send custom findings into Security Hub.</p>
+<p class="admonition-title">In your environment the Lambda function named "find-secrets-without-rotation" checks for secrets that have a rotation time that is beyond the max days parameter on the function.  When secrets are found with a rotation time beyond what is defined in the function a finding is created in Security Hub.  Take some time to explore the Lambda function to see how you can directly send custom findings into Security Hub.</p>
 </div>
 <h2 id="create-custom-insights-for-custom-findings">Create Custom Insights for Custom Findings</h2>
 <p>This section will walk you through how to create a custom insight to give you more visibility around the sources that are sending findings into Security Hub for custom findings.</p>
@@ -555,14 +567,11 @@
 <p>Click <strong>Create insight</strong>.</p>
 </li>
 <li>
-<p>Click in the filter field at the top to add additional filters.</p>
+<p>Click in the filter field at the top to add additional filters.  Choose a filter field of <strong>Company name</strong>, a filter match type of <strong>is</strong>, and a value of <strong>Personal</strong>.</p>
+<p><img alt="Config" src="../images/02-create-custom-insight-company-filter.png" /></p>
 </li>
 <li>
-<p>Choose a filter field of <strong>Company name</strong>.  Choose a filter match type of <strong>IS</strong> and a value of <strong>Personal</strong>.
-    <img alt="Config" src="../images/02-create-custom-insight-company-filter.png" /></p>
-</li>
-<li>
-<p>Choose a filter field of <strong>Product name</strong>.  Choose a filter match type of <strong>IS</strong> and a value of <strong>Default</strong>.</p>
+<p>Now add one more filter.  Choose a filter field of <strong>Product name</strong>, a filter match type of <strong>is</strong>, and a value of <strong>Default</strong>.</p>
 </li>
 <li>
 <p>Choose a Grouping of <strong>Group by:</strong>.  In the list of options choose <strong>Generator ID</strong>.<br />
@@ -579,10 +588,10 @@
 <p><strong>Refresh</strong> your browser to reload the screen with Graphs.</p>
 </li>
 </ol>
+<p><img alt="Config" src="../images/02-custom-insight-final.png" /></p>
 <p>You now have a custom insight that allows you to get more visibility around custom findings that are coming into Security Hub, allowing you more visibility into what your security findings are related to, what the source of the findings are, and where you should prioritize your remediation efforts. <br />
 For the findings in this custom insight you can click on the resource ID links to drill into the specific findings related to those resources. </p>
 <p>Feel free to play with the grouping for your insight to see other attributes that you can group by and the different views of data it creates.  </p>
-<p><img alt="Config" src="../images/02-custom-insight-final.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">It's ok if your list of findings is different.</p>
 </div>
@@ -696,8 +705,8 @@ For the findings in this custom insight you can click on the resource ID links t
       
     </div>
     
-      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({

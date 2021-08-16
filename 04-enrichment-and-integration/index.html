@@ -9,13 +9,14 @@
         <meta name="description" content="AWS Security Hub allows you to centrally view and manage security alerts and automate security checks across AWS accounts. This workshop provides hands on experience with the full functionality that Security Hub provides. Your workshop starts with a guided tour of the Security Hub UI and its features. Next, you will integrate security findings from AWS services, learn how to integrate 3rd party security findings for your AWS environment, and build out your own custom security finding integration. Finally, you will respond to the security findings in your environment by taking action via manual and automated response techniques.">
       
       
+      
         <link rel="canonical" href="https://security-hub-workshop.awssecworkshops.com/04-enrichment-and-integration/">
       
       
         <meta name="author" content="aws-security-workshops@amazon.com">
       
       <link rel="shortcut icon" href="../assets/images/aws-favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
@@ -23,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -68,7 +69,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-header-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -101,7 +104,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -152,7 +155,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://security-hub-workshop.awssecworkshops.com/" title="Integration, Prioritization, and Response with AWS Security Hub" class="md-nav__button md-logo" aria-label="Integration, Prioritization, and Response with AWS Security Hub">
       
@@ -565,10 +570,10 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p>Go to your Slack API(https://api.slack.com).  </p>
 </li>
 <li>
-<p>Click <strong>Start Building</strong>.  </p>
+<p>Click on <strong>Create an App</strong> button. </p>
 </li>
 <li>
-<p>Click on <strong>Create an App</strong> button. </p>
+<p>In the <strong>Create an app</strong> popup choose <strong>From scratch</strong></p>
 </li>
 <li>
 <p>Fill in the following details for your app:  </p>
@@ -588,7 +593,7 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p>At the <strong>Activate Incoming Webhooks</strong> screen, move the slider from OFF to ON. </p>
 </li>
 <li>
-<p>Scroll down and choose <strong>Add New Webhook to Workspace</strong>. </p>
+<p>At the bottom of the screen choose <strong>Add New Webhook to Workspace</strong>. </p>
 </li>
 <li>
 <p>In the screen asking where your app should post choose the channel that you created in an earlier step.</p>
@@ -606,7 +611,6 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>Click on <strong>Settings</strong>. </p>
-<p><img alt="ChatOps" src="../images/04-chatops-sechub.png" /></p>
 </li>
 <li>
 <p>Click <strong>Custom Actions</strong>.</p>
@@ -617,14 +621,18 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <ul>
 <li><strong>Action Name</strong> as ‘Send to Slack’, </li>
 <li><strong>Description</strong> as ‘Custom action to send security findings to Slack.’ </li>
-<li><strong>Custom Action ID</strong> as shslaction </li>
+<li><strong>Custom Action ID</strong> as sendtoslack </li>
 </ul>
 </li>
 <li>
-<p>Click <strong>Create custom action</strong>.</p>
+<p>Click <strong>Create custom action</strong>.<br />
+<img alt="ChatOps" src="../images/04-chatops-sechub-create.png" /></p>
+</li>
+<li>
+<p>Copy the Custom action ARN that was generated for your custom finding as it will be needed in the next steps.  </p>
 </li>
 </ol>
-<p><img alt="ChatOps" src="../images/04-chatops-sechub-create.png" /></p>
+<p><img alt="ChatOps" src="../images/04-chatops-arn.png" /></p>
 <h3 id="create-a-eventbridge-rule-for-security-hub-custom-actions-to-lambda">Create a EventBridge Rule for Security Hub Custom Actions to Lambda</h3>
 <p>Taking action on a finding in Security Hub results in the information for the finding and the ARN of the custom action being sent to EventBridge. To successfully process this action, a EventBridge rule  needs to be defined so the action information can be sent to Slack. </p>
 <ol>
@@ -656,30 +664,10 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 </li>
 <li>
 <p>In the drop down for <strong>Event type</strong> choose <strong>Security Hub Finding – Custom Action</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>Specific custom action ARN(s)</strong> radio button.  Enter the ARN for the custom action that you created earlier.</p>
 <p><img alt="ChatOps" src="../images/03-custom-create-event-source.png" /></p>
-</li>
-<li>
-<p>In the <strong>Event Pattern</strong> window click the <strong>Edit</strong> button. </p>
-</li>
-<li>
-<p>Add in the resources line as shown below, making sure to copy in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
-<div class="admonition info">
-<p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
-</div>
-<p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<p><pre>
-<code>{ 
-"source": [ 
-    "aws.securityhub" 
-  ], 
-  "detail-type": [ 
-    "Security Hub Findings - Custom Action" 
-  ], 
-  "resources": [ 
-     "arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/shslaction" 
-  ] 
-}</code></p>
-<p><img alt="ChatOps" src="../images/04-chatops-create-event-pattern-updated.png" /></p>
 </li>
 <li>
 <p>Under Select targets, select <strong>Lambda function</strong>.</p>
@@ -689,7 +677,7 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p><img alt="Custom Action" src="../images/04-slack-lambda-create-confirm.png" /></p>
 </li>
 <li>
-<p>Click <strong>Create</strong>.</p>
+<p>Click <strong>Create</strong> to complete creation of the Event Bridge rule.</p>
 </li>
 </ol>
 <h3 id="update-the-lambda-function-to-send-messages-to-slack">Update the Lambda Function to send messages to Slack</h3>
@@ -702,7 +690,7 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p>In the list of functions choose the <strong>sechub-to-slack</strong> function.</p>
 </li>
 <li>
-<p>Scroll down to environment variables and click <strong>Edit</strong>   Fill in:</p>
+<p>Click on the <strong>Configuration</strong> tab and then choose <strong>Environment variables</strong>.  Click the <strong>Edit</strong> button.  Fill in:</p>
 <ul>
 <li><strong>slackChannel:</strong> the value from the Slack channel you created earlier in this workshop.</li>
 <li><strong>webHookUrl:</strong> URL of the webhook for the Slack setup you created earlier in this workshop.</li>
@@ -791,33 +779,13 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p>In the drop down for <strong>Event type</strong> choose <strong>Security Hub Finding – Custom Action</strong>.</p>
 </li>
 <li>
-<p>In the <strong>Event Pattern</strong> window click the <strong>Edit</strong> button. </p>
-</li>
-<li>
-<p>Add in the resources line as shown below, making sure to copy in the ARN of <strong>your Custom Event</strong>.  Click <strong>Save</strong>. </p>
-<div class="admonition info">
-<p class="admonition-title">Note the comma after the bracket before the resources definition.</p>
-</div>
-<p>Copy and paste in the custom event pattern below.  Use the ARN you recorded for your Security Hub Custom Action </p>
-<p><pre>
-<code>{ 
-"source": [ 
-    "aws.securityhub" 
-  ], 
-  "detail-type": [ 
-    "Security Hub Findings - Custom Action" 
-  ], 
-  "resources": [ 
-     "arn:aws:securityhub:us-east-1:[YOUR-ACCOUNT-ID]:action/custom/getTags" 
-  ] 
-}</code>
-<img alt="Enrich" src="../images/04-enrich-create-event-pattern-updated.png" /></p>
+<p>Select the <strong>Specific custom action ARN(s)</strong> radio button.  Enter the ARN for the custom action that you created earlier.</p>
 </li>
 <li>
 <p>Under Select targets, ensure <strong>Lambda function</strong> is populated in the top drop down and then select <strong>enrich-sec-hub-finding</strong> lambda function. </p>
 </li>
 <li>
-<p>Click <strong>Create</strong>.</p>
+<p>Click <strong>Create</strong> to complete creation of the Event Bridge rule.</p>
 </li>
 </ol>
 <h3 id="test-your-enrichment-rule">Test your enrichment rule</h3>
@@ -832,7 +800,7 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
 <p>Click in the search space to <strong>Add filters</strong>, and find <strong>Resource Type</strong>.</p>
 </li>
 <li>
-<p>Add <strong>AwsEc2Instance</strong> (case sensitive) after EQUALS and click <strong>Apply</strong>.</p>
+<p>Add <strong>AwsEc2Instance</strong> (case sensitive) after <strong>is</strong> and click <strong>Apply</strong>.</p>
 <p><img alt="Enrich" src="../images/04-enrich-sechub-filter.png" /></p>
 </li>
 <li>
@@ -970,8 +938,8 @@ https://get.slack.help/hc/en-us/articles/206845317-Create-a-Slack-workspace </li
       
     </div>
     
-      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
